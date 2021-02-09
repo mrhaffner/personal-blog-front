@@ -12,7 +12,7 @@ const Home = () => {
             <div className='h-full w-full'>
                 {  
                     blogs.map((blog, i) => {
-                        let classes = `${colors[i % colors.length]} h-52 flex ${justify[i % justify.length]}`
+                        let classes = `${colors[i % colors.length]} h-72 flex ${justify[i % justify.length]}`
                         return (
                             <div className={classes}  key={blog.title}>
                                 <BlogPreview blog={blog}/>
