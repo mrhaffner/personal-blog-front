@@ -9,6 +9,7 @@ module.exports = {
         'hero-pattern': "url('./img/hero-pattern.jpg')",
         'w-img-card': "url('./img/w-img-card.jpg')",
         'blog-card1': "url('./img/blog-card1.jpg')",
+        'picture-card1': "url('./img/picture-card1.jpg')",
       }),
       colors: {
         bluegray: colors.blueGray,
