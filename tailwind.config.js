@@ -8,6 +8,7 @@ module.exports = {
       backgroundImage: theme => ({
         'hero-pattern': "url('./img/hero-pattern.jpg')",
         'w-img-card': "url('./img/w-img-card.jpg')",
+        'blog-card1': "url('./img/blog-card1.jpg')",
       }),
       colors: {
         bluegray: colors.blueGray,
@@ -27,6 +28,11 @@ module.exports = {
       },
       height: {
         hero: '70vh',
+      },
+      width: {
+        84: '21rem',
+        88: '22rem',
+        92: '23rem',
       }
     },
   },
