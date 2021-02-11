@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       backgroundImage: theme => ({
         'hero-pattern': "url('./img/hero-pattern.jpg')",
+        'w-img-card': "url('./img/w-img-card.jpg')",
       }),
       colors: {
         bluegray: colors.blueGray,
