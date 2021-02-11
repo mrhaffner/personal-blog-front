@@ -12,7 +12,7 @@ const BlogPreview = ({blog}) => {
             <p className='text-gray-800 text-l font-semibold pb-5'>{blog.title}</p>
             <p>{blog.text}</p>
             <div className='flex justify-end mt-3'>
-                <p className='text-gray-500 tracking-wide uppercase font-semibold text-sm'>Read Me</p>
+                <p className='text-gray-500 tracking-wide uppercase font-semibold text-sm'>Read More</p>
             </div>
         </div>
     );

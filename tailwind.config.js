@@ -4,13 +4,29 @@ module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    colors: {
-      bluegray: colors.blueGray,
-      green: colors.green,
-      blue: colors.blue,
-      pink: colors.pink,
-      gray: colors.gray,
-      white: colors.white,
+    extend: {
+      backgroundImage: theme => ({
+        'hero-pattern': "url('./img/hero-pattern.jpg')",
+      }),
+      colors: {
+        bluegray: colors.blueGray,
+        coolgray: colors.coolGray,
+        truegray: colors.trueGray,
+        warmgray: colors.warmGray,
+        orange: colors.orange,
+        amber: colors.amber,
+        lime: colors.lime,
+        emerald: colors.emerald,
+        teal: colors.teal,
+        cyan: colors.cyan,
+        lightblue: colors.lightBlue,
+        violet: colors.violet,
+        fuchsia: colors.fushcia,
+        rose: colors.rose,
+      },
+      height: {
+        hero: '70vh',
+      }
     },
   },
   variants: {
