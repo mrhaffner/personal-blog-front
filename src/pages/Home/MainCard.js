@@ -15,13 +15,14 @@ const MainCard = () => {
                     <BlogCard bg={3} />
                 </div>
             </div>
-            <div className='flex w-full mb-32'>
+            <div className='flex w-full'>
                 <PictureCard bg={1} />
                 <PictureCard bg={2} />
                 <PictureCard bg={3} />
                 <PictureCard bg={4} />
             </div>
-            <div className='mb-32'>
+            <div className='w-full bg-blue-500 flex flex-col items-center '>
+                <h2 className='font-bold text-2xl text-white my-24'>About Your Author</h2>
                 <Author />
             </div>
         </div>
