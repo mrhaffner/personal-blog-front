@@ -4,7 +4,7 @@ const Header = () => {
     return (
         <div className='bg-fixed bg-hero-pattern h-hero text-white'>
             <nav className='flex justify-center'>
-                <ul className='flex justify-between pt-10 w-1/2 font-bold text-l tracking-wide'>
+                <ul className='flex justify-between pt-10 w-278 font-bold text-l tracking-wide'>
                     <li>Home</li>
                     <li>Search</li>
                 </ul>
