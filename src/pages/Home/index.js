@@ -5,7 +5,7 @@ import Header from './Header'
 const Home = () => {
   
     return (
-        <div className='bg-lightblue-50 h-full'>
+        <div className='bg-lightblue-50 h-full pb-16'>
             <Header />
             <MainCard />
         </div>

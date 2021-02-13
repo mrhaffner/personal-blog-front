@@ -5,7 +5,7 @@ const WideCard = () => (
         <div className='w-1/3 text-center'>
             <h3 className='text-xl font-semibold mb-4'>Title of muh blog post</h3>
             <p className='text-bluegray-300 mb-6'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
-            <button className='px-3 py-2 bg-green-500 rounded-xl tracking-wide'>READ POST</button>
+            <button className='px-3 py-2 bg-green-500 rounded-xl tracking-wide uppercase shadow-custom'>Read Post</button>
         </div>
     </div>
 );

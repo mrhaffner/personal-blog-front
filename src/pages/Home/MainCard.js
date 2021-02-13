@@ -3,6 +3,7 @@ import WideCard from './WideCard'
 import BlogCard from './BlogCard'
 import PictureCard from './PictureCard'
 import Author from './Author'
+import TextField from '../../components/TextField'
 
 const MainCard = () => {
     return (
@@ -21,9 +22,18 @@ const MainCard = () => {
                 <PictureCard bg={3} />
                 <PictureCard bg={4} />
             </div>
-            <div className='w-full bg-blue-500 flex flex-col items-center '>
+            <div className='w-full bg-blue-500 flex flex-col items-center mb-32 pb-32'>
                 <h2 className='font-bold text-2xl text-white my-24'>About Your Author</h2>
                 <Author />
+            </div>
+            <div className='flex w-278'>
+                <div>
+                    <h2 className='text-2xl font-bold'>Stay Tuned to The Latest Articles</h2>
+                    <p className='text-bluegray-500 text-sm'>Subscribe to our newsletter to hear when the latest articles are posted and stay up to date.</p>
+                </div>
+                <div className='flex items-start'>
+                    <TextField placeholderText='Email Address' btnText='Subscribe' />
+                </div>
             </div>
         </div>
 
