@@ -22,16 +22,16 @@ const MainCard = () => {
                 <PictureCard bg={3} />
                 <PictureCard bg={4} />
             </div>
-            <div className='w-full bg-blue-500 flex flex-col items-center mb-32 pb-32'>
-                <h2 className='font-bold text-2xl text-white my-24'>About Your Author</h2>
+            <div className='w-full bg-green-700 flex flex-col items-center mb-32 pb-44 pt-32'>
+                <h2 className='font-bold text-2xl text-white mb-20'>About Your Author</h2>
                 <Author />
             </div>
-            <div className='flex w-278'>
-                <div>
-                    <h2 className='text-2xl font-bold'>Stay Tuned to The Latest Articles</h2>
-                    <p className='text-bluegray-500 text-sm'>Subscribe to our newsletter to hear when the latest articles are posted and stay up to date.</p>
+            <div className='flex justify-center w-278 mb-32'>
+                <div className='flex flex-col justify-center w-128'>
+                    <h2 className='text-2xl font-bold mb-4'>Stay Tuned to The Latest Articles</h2>
+                    <p className='text-bluegray-500'>Subscribe to our newsletter to hear when the latest articles are posted and stay up to date.</p>
                 </div>
-                <div className='flex items-start'>
+                <div>
                     <TextField placeholderText='Email Address' btnText='Subscribe' />
                 </div>
             </div>

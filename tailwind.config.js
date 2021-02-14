@@ -45,6 +45,7 @@ module.exports = {
         84: '21rem',
         88: '22rem',
         92: '23rem',
+        128: '32rem',
         192: '48rem',
         278: '70rem',
         286: '72rem',
