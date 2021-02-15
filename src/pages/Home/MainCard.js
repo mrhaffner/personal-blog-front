@@ -3,12 +3,16 @@ import WideCard from './WideCard'
 import BlogCard from './BlogCard'
 import PictureCard from './PictureCard'
 import Author from './Author'
+import Filter from './Filter'
 import TextField from '../../components/TextField'
 
 const MainCard = () => {
     return (
         <div className='mx-5 -mt-20 bg-white shadow-custom rounded-2xl flex flex-col items-center text-gray-700'>
-            <div className='w-278 flex flex-col items-center mt-20'>
+            <div className='w-278 flex flex-col items-center mt-12'>
+                <div className='mb-16 w-full'>
+                    <Filter />
+                </div>
                 <WideCard />
                 <div className='flex justify-between w-full my-32'>
                     <BlogCard bg={1} />
