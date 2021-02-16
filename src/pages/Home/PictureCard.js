@@ -1,7 +1,7 @@
 import React from 'react'
 
-const WideCard = ({bg}) => {
-    const imgClass = `w-1/4 h-96 bg-picture-card${bg} bg-center bg-cover text-white flex items-end`
+const PictureCard = ({bg}) => {
+    const imgClass = `w-1/4 h-96 bg-picture-card${bg} bg-center bg-cover text-white flex items-end transform transition-transform ease-linear hover:scale-105 hover:z-10`
     return (
         <div className={imgClass}>
             <div className='mb-4 mx-4'>
@@ -11,4 +11,4 @@ const WideCard = ({bg}) => {
     );
 }
 
-export default WideCard;
+export default PictureCard;

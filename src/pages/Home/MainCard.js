@@ -1,6 +1,6 @@
 import React from 'react'
 import WideCard from './WideCard'
-import BlogCard from './BlogCard'
+import BlogCard from '../../components/BlogCard'
 import PictureCard from './PictureCard'
 import Author from './Author'
 import Filter from './Filter'
@@ -8,7 +8,7 @@ import TextField from '../../components/TextField'
 
 const MainCard = () => {
     return (
-        <div className='mx-5 -mt-20 bg-white shadow-custom rounded-2xl flex flex-col items-center text-gray-700'>
+        <div className='mx-8 -mt-20 bg-white shadow-custom rounded-2xl flex flex-col items-center text-gray-700'>
             <div className='w-278 flex flex-col items-center mt-12'>
                 <div className='mb-16 w-full'>
                     <Filter />
@@ -35,7 +35,7 @@ const MainCard = () => {
                     <h2 className='text-2xl font-bold mb-4'>Stay Tuned to The Latest Articles</h2>
                     <p className='text-bluegray-500'>Subscribe to our newsletter to hear when the latest articles are posted and stay up to date.</p>
                 </div>
-                <div>
+                <div className='-mt-10'>
                     <TextField placeholderText='Email Address' btnText='Subscribe' />
                 </div>
             </div>
