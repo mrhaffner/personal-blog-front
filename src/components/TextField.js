@@ -7,6 +7,7 @@ const TextField = ({ placeholderText, btnText }) => {
         console.log(inputText)
         setInputText('')
     }
+    
     return (
         <div className='p-10 flex items-end'>
             <form onSubmit={(e) => handleSubmit(e)} className='space-x-9'>

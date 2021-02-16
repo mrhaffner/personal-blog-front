@@ -1,6 +1,6 @@
 import React from 'react'
 
-const BlogCard = ({bg}) => {
+const PreviewCard = ({bg}) => {
     const imgClass = `bg-blog-card${bg} h-72 rounded-t-lg bg-center bg-cover mb-9`
     return (
         <div className='w-88 bg-white rounded-lg shadow-custom'>  
@@ -11,4 +11,4 @@ const BlogCard = ({bg}) => {
     );
 }
 
-export default BlogCard;
+export default PreviewCard;

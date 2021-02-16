@@ -1,5 +1,5 @@
 import React from 'react'
-import BlogCard from './BlogCard'
+import PreviewCard from './PreviewCard'
 
 const Footer = () => {
     return (
@@ -7,9 +7,9 @@ const Footer = () => {
             <div className='w-278 flex flex-col items-center mt-24'>
                 <h2 className='font-bold text-3xl mb-20'>For Your Consideration</h2>
                 <div className='flex justify-between w-full'>
-                    <BlogCard bg={1} />
-                    <BlogCard bg={2} />
-                    <BlogCard bg={3} />
+                    <PreviewCard bg={1} />
+                    <PreviewCard bg={2} />
+                    <PreviewCard bg={3} />
                 </div>
             </div>
         </div>

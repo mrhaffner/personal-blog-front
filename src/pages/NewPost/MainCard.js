@@ -1,15 +1,15 @@
 import React from 'react'
-import BlogList from '../../components/BlogList'
-import Filter from './Filter'
+import Form from './Form'
 
 const MainCard = () => {
+
     return (
         <div className='mx-8 mt-admin bg-white shadow-custom rounded-2xl flex flex-col items-center text-gray-700'>
-            <div className='w-278 flex flex-col items-center mt-12'>
-                <div className='w-full'>
-                    <Filter />
+            <div className='w-278 flex flex-col items-center mt-16'>
+                <h1 className='font-bold text-4xl'>Create Some Awesome Content</h1>
+                <div className='w-184'>
+                    <Form />
                 </div>
-                <BlogList />
             </div>
         </div>
 
