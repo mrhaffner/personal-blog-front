@@ -41,6 +41,9 @@ module.exports = {
         128: '32rem',
         hero: '70vh',
       },
+      margin: {
+        admin: '-89vh'
+      },
       width: {
         84: '21rem',
         88: '22rem',
