@@ -46,6 +46,7 @@ export const getUnpublishedBlogs = () => {
 export const getAllBlogs = () => {
   return async (dispatch) => {
     const blogs = await blogService.getAllPosts();
+    console.log(blogs);
     dispatch({
       type: 'SET_BLOGS',
       blogs,

@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Home from './pages/Home';
 import BlogPost from './pages/BlogPost';
 import Admin from './pages/Admin';
 import NewPost from './pages/NewPost';
+import { getAllBlogs } from './reducers/blogReducer';
 import { Switch, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  //change this to get published blogs once auth is set up
+  useEffect(() => {
+    dispatch(getAllBlogs());
+  }, [dispatch]);
+
   return (
     <div>
       <Switch>
-        <Route path="/blog-post">
+        <Route path="/blogs/:slug">
           <BlogPost />
         </Route>
         <Route path="/admin/new">
