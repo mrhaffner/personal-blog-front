@@ -1,8 +1,23 @@
 import axios from 'axios'
 const baseUrl = 'http://localhost:3001/blogs'
 
-const getAllPosts = async () => {
+const getPublishedPosts = async () => {
     const response = await axios.get(baseUrl)
+    return response.data
+}
+
+const getUnpublishedPosts = async () => {
+    const response = await axios.get(`${baseUrl}/unpublished`)
+    return response.data
+}
+
+const getAllPosts = async () => {
+    const response = await axios.get(`${baseUrl}/all`)
+    return response.data
+}
+
+const getPost = async id => {
+    const response = await axios.get(`${baseUrl}/${id}`)
     return response.data
 }
 
@@ -12,13 +27,18 @@ const createPost = async newPost => {
 }
 
 const editPost = async (id, editedPost) => {
-    const response = await axios.put(`${baseUrl}/${id}`, editedPost)
+    const response = await axios.put(`${baseUrl}/${id}/update`, editedPost)
+    return response.data
+}
+
+const publishPost = async (id, publishStatus) => {
+    const response = await axios.put(`${baseUrl}/${id}/publish`, publishStatus)
     return response.data
 }
 
 const removePost = async id => {
-    const response = await axios.delete(`${baseUrl}/${id}`)
+    const response = await axios.delete(`${baseUrl}/${id}/delete`)
     return response.data
-  }
+}
 
-export default { getAllPosts, createPost, editPost, removePost }
+export default { getPublishedPosts, getUnpublishedPosts, getAllPosts, getPost, createPost, editPost, publishPost, removePost }
