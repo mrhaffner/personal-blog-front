@@ -1,0 +1,9 @@
+public
+node_modules
+.gitignore
+craco.config.js
+package.json
+build
+package-lock.json
+README.node_modules
+tailwind.config.js

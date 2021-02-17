@@ -1,29 +1,29 @@
-import React from 'react'
-import Home from './pages/Home'
-import BlogPost from './pages/BlogPost'
-import Admin from './pages/Admin'
-import NewPost from './pages/NewPost'
-import { Switch, Route } from 'react-router-dom'
+import React from 'react';
+import Home from './pages/Home';
+import BlogPost from './pages/BlogPost';
+import Admin from './pages/Admin';
+import NewPost from './pages/NewPost';
+import { Switch, Route } from 'react-router-dom';
 
 const App = () => {
   return (
     <div>
       <Switch>
-        <Route path='/blog-post'>
+        <Route path="/blog-post">
           <BlogPost />
         </Route>
-        <Route path='/admin/new'>
+        <Route path="/admin/new">
           <NewPost />
         </Route>
-        <Route path='/admin'>
+        <Route path="/admin">
           <Admin />
         </Route>
-        <Route path='/'>
+        <Route path="/">
           <Home />
         </Route>
       </Switch>
     </div>
   );
-}
+};
 
 export default App;
