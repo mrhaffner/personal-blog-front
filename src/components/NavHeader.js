@@ -7,6 +7,7 @@ const NavHeader = () => (
       <div className="flex justify-between pt-10 w-278 font-bold text-l tracking-wide">
         <Link to="/admin/new">+ New Post (Add Link and Icon)</Link>
         <div className="space-x-6">
+          <Link to="/admin">Admin</Link>
           <Link to="/">Home</Link>
           <Link to="/">Log Out (add link)</Link>
         </div>

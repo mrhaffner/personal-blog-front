@@ -4,7 +4,7 @@ import BlogPost from './pages/BlogPost';
 import Admin from './pages/Admin';
 import NewPost from './pages/NewPost';
 import EditPost from './pages/EditPost';
-import { getAllBlogs } from './reducers/blogReducer';
+import { getPublishedBlogs } from './reducers/blogReducer';
 import { Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -13,7 +13,7 @@ const App = () => {
 
   //change this to get published blogs once auth is set up
   useEffect(() => {
-    dispatch(getAllBlogs());
+    dispatch(getPublishedBlogs());
   }, [dispatch]);
 
   return (

@@ -1,39 +1,38 @@
 import React from 'react';
 import TextField from '../../components/TextField';
 
-const Filter = () => {
+const Filter = ({ filter, setFilter }) => {
   const classActive = `px-5 py-1 bg-blue-500 rounded-full text-white font-bold text-l tracking-wide`;
   const classInactive = `px-5 py-1 font-bold text-l tracking-wide`;
-  const handleClick = (e) => {
-    if (e.target.className === classInactive) {
-      e.target.className = classActive;
-    } else {
-      e.target.className = classInactive;
-    }
-    console.log(e.target.innerHTML);
-  };
+
+  //dropdown for tags?
+
   return (
     <div className="w-full">
       <nav className="flex justify-between">
         <div className="pt-10 font-bold text-l tracking-wide">
           <button
-            className={classActive}
-            onClick={(e) => handleClick(e)}
+            className={
+              filter === 'Latest' ? classActive : classInactive
+            }
+            onClick={(e) => setFilter(e.target.name)}
+            name="Latest"
           >
             Latest
           </button>
           <button
-            className={classInactive}
-            onClick={(e) => handleClick(e)}
+            className={filter === 'All' ? classActive : classInactive}
+            onClick={(e) => setFilter(e.target.name)}
+            name="All"
           >
             All
           </button>
-          <button
+          {/* <button
             className={classInactive}
             onClick={(e) => handleClick(e)}
           >
             WebDev
-          </button>
+          </button> */}
         </div>
         <div>
           <TextField

@@ -16,10 +16,10 @@ const getAllPosts = async () => {
   return response.data;
 };
 
-const getPost = async (id) => {
-  const response = await axios.get(`${baseUrl}/${id}`);
-  return response.data;
-};
+// const getPost = async (id) => {
+//   const response = await axios.get(`${baseUrl}/${id}`);
+//   return response.data;
+// };
 
 const createPost = async (newPost) => {
   const response = await axios.post(baseUrl, newPost);
@@ -51,7 +51,6 @@ export default {
   getPublishedPosts,
   getUnpublishedPosts,
   getAllPosts,
-  getPost,
   createPost,
   editPost,
   publishPost,
