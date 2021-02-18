@@ -21,7 +21,7 @@ const MainCard = () => {
         <div className="mb-16 w-full">
           <Filter />
         </div>
-        <WideCard />
+        <WideCard blog={blogs[0]} />
         <div className="flex justify-between w-full my-32">
           <BlogCard bg={1} blog={blogs[1]} />
           <BlogCard bg={2} blog={blogs[2]} />
@@ -29,10 +29,10 @@ const MainCard = () => {
         </div>
       </div>
       <div className="flex w-full">
-        <PictureCard bg={1} />
-        <PictureCard bg={2} />
-        <PictureCard bg={3} />
-        <PictureCard bg={4} />
+        <PictureCard bg={1} blog={blogs[4]} />
+        <PictureCard bg={2} blog={blogs[5]} />
+        <PictureCard bg={3} blog={blogs[6]} />
+        <PictureCard bg={4} blog={blogs[7]} />
       </div>
       <div className="w-full bg-green-700 flex flex-col items-center mb-32 pb-44 pt-32">
         <h2 className="font-bold text-2xl text-white mb-20">
