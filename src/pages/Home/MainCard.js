@@ -5,8 +5,16 @@ import PictureCard from './PictureCard';
 import Author from './Author';
 import Filter from './Filter';
 import TextField from '../../components/TextField';
+import { useSelector } from 'react-redux';
 
 const MainCard = () => {
+  const blogs = useSelector((state) => state.blogs);
+
+  //update loading - probably use a skeleton or something
+  if (!blogs.length) {
+    return <div>Loading</div>;
+  }
+
   return (
     <div className="mx-8 -mt-20 bg-white shadow-custom rounded-2xl flex flex-col items-center text-gray-700">
       <div className="w-278 flex flex-col items-center mt-12">
@@ -15,9 +23,9 @@ const MainCard = () => {
         </div>
         <WideCard />
         <div className="flex justify-between w-full my-32">
-          <BlogCard bg={1} />
-          <BlogCard bg={2} />
-          <BlogCard bg={3} />
+          <BlogCard bg={1} blog={blogs[1]} />
+          <BlogCard bg={2} blog={blogs[2]} />
+          <BlogCard bg={3} blog={blogs[3]} />
         </div>
       </div>
       <div className="flex w-full">
