@@ -10,7 +10,7 @@ const LatestPosts = ({ blogs }) => {
   }
 
   return (
-    <div className="w-full flex flex-col items-center">
+    <div className="w-full flex flex-col items-center mt-16">
       <div className="w-278 ">
         <WideCard blog={blogs[0]} />
         <div className="flex justify-between w-full my-32">

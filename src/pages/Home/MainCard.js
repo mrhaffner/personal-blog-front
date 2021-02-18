@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import WideCard from './WideCard';
-import BlogCard from '../../components/BlogCard';
-import PictureCard from './PictureCard';
+import BlogList from '../../components/BlogList';
 import Author from './Author';
 import Filter from './Filter';
 import TextField from '../../components/TextField';
@@ -14,10 +12,14 @@ const MainCard = () => {
 
   return (
     <div className="mx-8 -mt-20 bg-white shadow-custom rounded-2xl flex flex-col items-center text-gray-700">
-      <div className="mb-16 mt-12 w-278">
+      <div className="mt-12 w-278">
         <Filter filter={filter} setFilter={setFilter} />
       </div>
-      <LatestPosts blogs={blogs} />
+      {filter === 'Latest' ? (
+        <LatestPosts blogs={blogs} />
+      ) : (
+        <BlogList blogs={blogs} />
+      )}
       <div className="w-full bg-green-700 flex flex-col items-center mb-32 pb-44 pt-32">
         <h2 className="font-bold text-2xl text-white mb-20">
           About Your Author
