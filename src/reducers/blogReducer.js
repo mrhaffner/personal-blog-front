@@ -7,10 +7,10 @@ const blogReducer = (state = [], action) => {
     case 'NEW_BLOG':
       return [...state, action.blog];
     case 'REMOVE_BLOG':
-      return state.filter((x) => x.id !== action.id);
+      return state.filter((x) => x._id !== action.id);
     case 'EDIT_BLOG':
       return state.map((x) =>
-        x.id !== action.updatedBlog.id ? x : action.updatedBlog,
+        x._id !== action.updatedBlog._id ? x : action.updatedBlog,
       );
     case 'PUBLISH_BLOG':
       return state.map((x) =>
@@ -67,11 +67,13 @@ export const addBlog = (blog) => {
 };
 
 export const editBlog = (id, blog) => {
-  return (dispatch) => {
-    blogService.editPost(id, blog);
+  return async (dispatch) => {
+    console.log(id, blog);
+    const updatedBlog = await blogService.editPost(id, blog);
+    console.log('hi');
     dispatch({
       type: 'EDIT_BLOG',
-      blog,
+      updatedBlog,
     });
   };
 };
@@ -87,12 +89,12 @@ export const publishBlog = (id, publishStatus) => {
   };
 };
 
-export const removeBlog = (blog) => {
+export const removeBlog = (id) => {
   return (dispatch) => {
-    blogService.removePost(blog.id);
+    blogService.removePost(id);
     dispatch({
       type: 'REMOVE_BLOG',
-      id: blog.id,
+      id,
     });
   };
 };

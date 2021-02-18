@@ -8,9 +8,9 @@ const Form = () => {
   const [title, setTitle] = useState('');
   const [subTitle, setSubTitle] = useState('');
   const [text, setText] = useState('## Use Markdown here!');
-  const dispatch = useDispatch();
 
   let history = useHistory();
+  const dispatch = useDispatch();
   const store = useStore();
 
   const handleSubmit = async (e) => {

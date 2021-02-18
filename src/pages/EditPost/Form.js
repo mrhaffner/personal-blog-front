@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import MDEditor from '@uiw/react-md-editor';
 import { useDispatch } from 'react-redux';
 import { editBlog, removeBlog } from '../../reducers/blogReducer';
@@ -7,8 +8,13 @@ const Form = ({ blog }) => {
   const [title, setTitle] = useState(blog.title);
   const [subTitle, setSubTitle] = useState(blog.subTitle);
   const [text, setText] = useState(blog.text);
+
+  let history = useHistory();
+
   const dispatch = useDispatch();
 
+  // change slug and redirect if title is different!
+  // add some sort of indication that it was updated
   const handleEdit = (e) => {
     e.preventDefault();
     const blogObject = { ...blog, title, subTitle, text };
@@ -18,7 +24,9 @@ const Form = ({ blog }) => {
   const handlePubStatus = () => {};
 
   const handleDelete = () => {
+    console.log(blog._id);
     dispatch(removeBlog(blog._id));
+    history.push('/admin');
   };
 
   //should display date created!!!
