@@ -3,25 +3,22 @@ import MDEditor from '@uiw/react-md-editor';
 import { useDispatch } from 'react-redux';
 import { editBlog, removeBlog } from '../../reducers/blogReducer';
 
-const Form = () => {
-  const [title, setTitle] = useState('');
-  const [subTitle, setSubTitle] = useState('');
-  const [text, setText] = useState('## Use Markdown here!');
+const Form = ({ blog }) => {
+  const [title, setTitle] = useState(blog.title);
+  const [subTitle, setSubTitle] = useState(blog.subTitle);
+  const [text, setText] = useState(blog.text);
   const dispatch = useDispatch();
-  //useEffect useParams to get slug and GET the blog - set to 'activeBlog' in blogReducer???
 
   const handleEdit = (e) => {
     e.preventDefault();
     const blogObject = { ...blog, title, subTitle, text };
-    console.log(blogObject);
-    dispatch(editBlog(id, blogObject));
+    dispatch(editBlog(blog._id, blogObject));
   };
 
   const handlePubStatus = () => {};
 
-  const handleDelete = (e) => {
-    e.preventDefault();
-    dispatch(removeBlog(id));
+  const handleDelete = () => {
+    dispatch(removeBlog(blog._id));
   };
 
   //should display date created!!!
@@ -35,7 +32,7 @@ const Form = () => {
         <input
           type="text"
           onChange={(e) => setTitle(e.target.value)}
-          placeholder="something amazing..."
+          value={title}
           className="border-b-2 pr-12 block "
         />
       </div>
@@ -44,7 +41,7 @@ const Form = () => {
         <input
           type="text"
           onChange={(e) => setSubTitle(e.target.value)}
-          placeholder="not too long now..."
+          value={subTitle}
           className="border-b-2 pr-12 block"
         />
       </div>
@@ -62,7 +59,7 @@ const Form = () => {
           </button>
           <button
             type="button"
-            onClick={handlePubStatus()}
+            onClick={() => handlePubStatus()}
             className="px-5 py-2 bg-amber-500 rounded-full tracking-wide uppercase text-white"
           >
             Pub/Unpub
@@ -70,7 +67,7 @@ const Form = () => {
         </div>
         <button
           type="button"
-          onClick={handleDelete()}
+          onClick={() => handleDelete()}
           className="px-5 py-2 bg-red-500 rounded-full tracking-wide uppercase text-white"
         >
           Delete

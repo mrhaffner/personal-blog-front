@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import MDEditor from '@uiw/react-md-editor';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useStore } from 'react-redux';
 import { addBlog } from '../../reducers/blogReducer';
 
 const Form = () => {
@@ -11,13 +11,16 @@ const Form = () => {
   const dispatch = useDispatch();
 
   let history = useHistory();
+  const store = useStore();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const blogObject = { title, subTitle, text };
-    console.log(blogObject);
-    dispatch(addBlog(blogObject));
-    //history.push(`/admin/edit/${response.slug}`);
+    await dispatch(addBlog(blogObject));
+    const slug = store.getState().blogs[
+      store.getState().blogs.length - 1
+    ].slug;
+    history.push(`/admin/${slug}`);
   };
 
   //should display date created!!!
