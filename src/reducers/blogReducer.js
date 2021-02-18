@@ -14,7 +14,7 @@ const blogReducer = (state = [], action) => {
       );
     case 'PUBLISH_BLOG':
       return state.map((x) =>
-        x.id !== action.id
+        x._id !== action.id
           ? x
           : { ...x, isPublished: action.publishStatus },
       );

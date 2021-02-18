@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import MDEditor from '@uiw/react-md-editor';
 import { useDispatch } from 'react-redux';
-import { editBlog, removeBlog } from '../../reducers/blogReducer';
+import {
+  editBlog,
+  publishBlog,
+  removeBlog,
+} from '../../reducers/blogReducer';
 
 const Form = ({ blog }) => {
   const [title, setTitle] = useState(blog.title);
@@ -21,10 +25,14 @@ const Form = ({ blog }) => {
     dispatch(editBlog(blog._id, blogObject));
   };
 
-  const handlePubStatus = () => {};
+  // add a warning
+  const handlePubStatus = () => {
+    const publishObject = { isPublished: !blog.isPublished };
+    dispatch(publishBlog(blog._id, publishObject));
+  };
 
+  // add a warning
   const handleDelete = () => {
-    console.log(blog._id);
     dispatch(removeBlog(blog._id));
     history.push('/admin');
   };
@@ -57,8 +65,8 @@ const Form = ({ blog }) => {
         <label htmlFor="Article Body">Article Body</label>
         <MDEditor value={text} onChange={setText} />
       </div>
-      <div className="flex space-between">
-        <div>
+      <div className="flex justify-between">
+        <div className="space-x-3">
           <button
             type="submit"
             className="px-5 py-2 bg-blue-500 rounded-full tracking-wide uppercase text-white"
@@ -70,7 +78,7 @@ const Form = ({ blog }) => {
             onClick={() => handlePubStatus()}
             className="px-5 py-2 bg-amber-500 rounded-full tracking-wide uppercase text-white"
           >
-            Pub/Unpub
+            {blog.isPublished ? 'Unpublish' : 'Publish'}
           </button>
         </div>
         <button

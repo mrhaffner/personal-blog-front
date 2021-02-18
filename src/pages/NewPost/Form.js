@@ -17,9 +17,10 @@ const Form = () => {
     e.preventDefault();
     const blogObject = { title, subTitle, text };
     await dispatch(addBlog(blogObject));
-    const slug = store.getState().blogs[
-      store.getState().blogs.length - 1
-    ].slug;
+    // const slug = store.getState().blogs[
+    //   store.getState().blogs.length - 1
+    // ].slug;
+    const { slug } = store.getState().blogs.slice(-1)[0];
     history.push(`/admin/${slug}`);
   };
 
