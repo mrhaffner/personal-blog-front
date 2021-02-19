@@ -8,17 +8,22 @@ import { useSelector } from 'react-redux';
 
 const MainCard = () => {
   const [filter, setFilter] = useState('Latest');
+  const [textFilter, setTextFilter] = useState('');
   const blogs = useSelector((state) => state.blogs);
 
   return (
     <div className="mx-8 -mt-20 bg-white shadow-custom rounded-2xl flex flex-col items-center text-gray-700">
       <div className="mt-12 w-278">
-        <Filter filter={filter} setFilter={setFilter} />
+        <Filter
+          setFilter={setFilter}
+          filter={filter}
+          setTextFilter={setTextFilter}
+        />
       </div>
       {filter === 'Latest' ? (
         <LatestPosts blogs={blogs} />
       ) : (
-        <BlogList blogs={blogs} />
+        <BlogList blogs={blogs} textFilter={textFilter} />
       )}
       <div className="w-full bg-green-700 flex flex-col items-center mb-32 pb-44 pt-32">
         <h2 className="font-bold text-2xl text-white mb-20">

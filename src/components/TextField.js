@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 
-const TextField = ({ placeholderText, btnText }) => {
+const TextField = ({
+  placeholderText,
+  btnText,
+  setFilter,
+  setTextFilter,
+}) => {
   const [inputText, setInputText] = useState('');
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(inputText);
-    setInputText('');
+    setTextFilter(inputText);
+    // setInputText('');
+    setFilter('');
   };
 
   return (
