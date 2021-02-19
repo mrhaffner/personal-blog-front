@@ -4,9 +4,6 @@ import BlogCard from './BlogCard';
 const BlogList = ({ blogs, edit, textFilter }) => {
   // this needs to change to handle arrays shorter than 9 - might be easy to map if using flex grid instead of all the flex box divs
   // might need to set a fixed height for the card if less than 9 blogs are given
-  if (!blogs.length) {
-    return <div>Loading</div>;
-  }
 
   // return (
   //   <div className="w-278">

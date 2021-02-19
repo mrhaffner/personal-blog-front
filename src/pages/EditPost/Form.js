@@ -69,14 +69,14 @@ const Form = ({ blog }) => {
         <div className="space-x-3">
           <button
             type="submit"
-            className="px-5 py-2 bg-blue-500 rounded-full tracking-wide uppercase text-white"
+            className="px-5 py-2 bg-blue-500 rounded-full text-white font-bold text-l tracking-wide"
           >
             Update
           </button>
           <button
             type="button"
             onClick={() => handlePubStatus()}
-            className="px-5 py-2 bg-amber-500 rounded-full tracking-wide uppercase text-white"
+            className="px-5 py-2 bg-amber-500 rounded-full text-white font-bold text-l tracking-wide"
           >
             {blog.isPublished ? 'Unpublish' : 'Publish'}
           </button>
@@ -84,7 +84,7 @@ const Form = ({ blog }) => {
         <button
           type="button"
           onClick={() => handleDelete()}
-          className="px-5 py-2 bg-red-500 rounded-full tracking-wide uppercase text-white"
+          className="px-5 py-2 bg-red-500 rounded-full text-white font-bold text-l tracking-wide"
         >
           Delete
         </button>

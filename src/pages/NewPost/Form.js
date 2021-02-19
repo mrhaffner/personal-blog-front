@@ -54,7 +54,7 @@ const Form = () => {
       </div>
       <button
         type="submit"
-        className="px-5 py-2 bg-blue-500 rounded-full tracking-wide uppercase text-white"
+        className="px-5 py-2 bg-blue-500 rounded-full text-white font-bold text-l tracking-wide"
       >
         Save
       </button>
