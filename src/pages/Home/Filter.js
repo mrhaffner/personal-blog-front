@@ -6,6 +6,11 @@ const Filter = ({ filter, setFilter, setTextFilter }) => {
   const classInactive = `px-5 py-1 font-bold text-l tracking-wide`;
   //dropdown for tags?
 
+  const handleClick = (e) => {
+    setFilter(e.target.name);
+    setTextFilter('');
+  };
+
   return (
     <div className="w-full">
       <nav className="flex justify-between">
@@ -14,14 +19,14 @@ const Filter = ({ filter, setFilter, setTextFilter }) => {
             className={
               filter === 'Latest' ? classActive : classInactive
             }
-            onClick={(e) => setFilter(e.target.name)}
+            onClick={(e) => handleClick(e)}
             name="Latest"
           >
             Latest
           </button>
           <button
             className={filter === 'All' ? classActive : classInactive}
-            onClick={(e) => setFilter(e.target.name)}
+            onClick={(e) => handleClick(e)}
             name="All"
           >
             All
@@ -35,7 +40,7 @@ const Filter = ({ filter, setFilter, setTextFilter }) => {
         </div>
         <div>
           <TextField
-            placeholderText="Search Articles..."
+            placeholderText="Search Articles by Title..."
             btnText="Search"
             setTextFilter={setTextFilter}
             setFilter={setFilter}

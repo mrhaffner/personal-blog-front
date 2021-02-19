@@ -28,8 +28,30 @@ const BlogList = ({ blogs, edit, textFilter }) => {
   //   </div>
   // );
 
+  if (textFilter !== '') {
+    const filteredBlogs = blogs.filter((blog) =>
+      blog.title.toLowerCase().includes(textFilter.toLowerCase()),
+    );
+
+    //add message that nothing was found?
+    //keep size of card consistent with less than 7 search results?
+    //PAGINATION
+
+    return (
+      <div className="w-278 mt-16 mb-32 grid grid-cols-3 gap-y-32 gap-x-8">
+        {filteredBlogs.map((blog) => {
+          return (
+            <BlogCard bg={1} blog={blog} edit={edit} key={blog._id} />
+          );
+        })}
+      </div>
+    );
+  }
+
+  //keep size of card consistent with less than 7 search results?
+  //PAGINATION
   return (
-    <div className="w-278 mt-16 mb-32 grid grid-cols-3 auto-cols-max gap-y-32 gap-x-8">
+    <div className="w-278 mt-16 mb-32 grid grid-cols-3 gap-y-32 gap-x-8">
       {blogs.map((blog) => {
         return (
           <BlogCard bg={1} blog={blog} edit={edit} key={blog._id} />
