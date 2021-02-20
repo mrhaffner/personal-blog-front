@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const NavHeader = () => (
-  <div className="bg-fixed bg-green-700 h-screen text-white">
+  <div className="bg-green-700 h-screen text-white">
     <nav className="flex justify-center">
       <div className="flex justify-between pt-10 w-278 font-bold text-l tracking-wide">
         <Link to="/admin/new">+ New Post (Add Link and Icon)</Link>
