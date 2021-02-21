@@ -7,11 +7,12 @@ import EditPost from './pages/EditPost';
 import LogIn from './pages/LogIn';
 import { getPublishedBlogs } from './reducers/blogReducer';
 import { setUser } from './reducers/loggedUserReducer';
-import { Switch, Route } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 const App = () => {
   const dispatch = useDispatch();
+  const loggedUser = useSelector((state) => state.loggedUser);
 
   useEffect(() => {
     dispatch(getPublishedBlogs());
@@ -30,19 +31,19 @@ const App = () => {
   return (
     <Switch>
       <Route path="/admin/new">
-        <NewPost />
+        {loggedUser ? <NewPost /> : <Redirect to="/login" />}
       </Route>
       <Route path="/admin/:slug">
-        <EditPost />
+        {loggedUser ? <EditPost /> : <Redirect to="/login" />}
       </Route>
       <Route path="/blogs/:slug">
         <BlogPost />
       </Route>
       <Route path="/admin">
-        <Admin />
+        {loggedUser ? <Admin /> : <Redirect to="/login" />}
       </Route>
       <Route path="/login">
-        <LogIn />
+        {loggedUser ? <Redirect to="/admin" /> : <LogIn />}
       </Route>
       <Route path="/">
         <Home />
