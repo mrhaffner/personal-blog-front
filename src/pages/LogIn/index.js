@@ -6,7 +6,7 @@ const LogIn = () => {
   return (
     <div className="bg-lightblue-50 min-h-screen">
       <nav className="flex justify-center">
-        <div className="flex justify-end pt-10 w-278 font-bold text-l tracking-wide">
+        <div className="flex justify-end pt-10 w-278 font-bold text-gray-400 text-l tracking-wide">
           <Link to="/">Return</Link>
         </div>
       </nav>
