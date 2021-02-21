@@ -29,7 +29,7 @@ const MainCard = () => {
 
   return (
     <div className="w-80 h-112 bg-white shadow-custom rounded-2xl text-gray-700 overflow-hidden">
-      <div className="bg-green-700 pt-24 pb-10 flex justify-center text-white font-bold text-2xl">
+      <div className="bg-green-700 pt-20 pb-10 flex justify-center text-white font-bold text-2xl">
         <h1>Admin Login</h1>
       </div>
       <div className="flex justify-center items-center">
@@ -55,7 +55,7 @@ const MainCard = () => {
               className="border-b-2 pr-20 block"
             />
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center pt-6">
             <button
               type="submit"
               // className="px-5 py-2 bg-blue-500 rounded-full text-white font-bold text-l tracking-wide"
