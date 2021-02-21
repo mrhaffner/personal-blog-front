@@ -6,15 +6,25 @@ import NewPost from './pages/NewPost';
 import EditPost from './pages/EditPost';
 import LogIn from './pages/LogIn';
 import { getPublishedBlogs } from './reducers/blogReducer';
+import { setUser } from './reducers/loggedUserReducer';
 import { Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 const App = () => {
   const dispatch = useDispatch();
 
-  //change this to get published blogs once auth is set up
   useEffect(() => {
     dispatch(getPublishedBlogs());
+  }, [dispatch]);
+
+  useEffect(() => {
+    const loggedUserJSON = window.localStorage.getItem(
+      'loggedBlogappUser',
+    );
+    if (loggedUserJSON) {
+      const newUser = JSON.parse(loggedUserJSON);
+      dispatch(setUser(newUser));
+    }
   }, [dispatch]);
 
   return (

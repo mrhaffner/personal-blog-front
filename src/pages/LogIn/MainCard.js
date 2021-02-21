@@ -1,12 +1,34 @@
 import React, { useState } from 'react';
+import loginService from '../../services/login';
+import { setUser } from '../../reducers/loggedUserReducer';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 const MainCard = () => {
-  const [inputText, setInputText] = useState('');
-  const handleSubmit = (e) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const newUser = await loginService.login({
+      username,
+      password,
+    });
+    setUsername('');
+    setPassword('');
+    window.localStorage.setItem(
+      'loggedBlogappUser',
+      JSON.stringify(newUser),
+    );
+    dispatch(setUser(newUser));
+    history.push('/admin');
   };
+
   return (
-    <div className="w-96 h-128 bg-white shadow-custom rounded-2xl text-gray-700 overflow-hidden">
+    <div className="w-80 h-112 bg-white shadow-custom rounded-2xl text-gray-700 overflow-hidden">
       <div className="bg-green-700 pt-24 pb-10 flex justify-center text-white font-bold text-2xl">
         <h1>Admin Login</h1>
       </div>
@@ -18,33 +40,30 @@ const MainCard = () => {
           <div className="">
             <input
               type="text"
-              // onChange={(e) => setTitle(e.target.value)}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               placeholder="Username"
-              className="border-b-2 pr-24 block"
+              className="border-b-2 pr-20 block"
             />
           </div>
           <div className="">
             <input
               type="text"
-              // onChange={(e) => setSubTitle(e.target.value)}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
-              className="border-b-2 pr-24 block"
+              className="border-b-2 pr-20 block"
             />
           </div>
-          <div className="">
-            <input
-              type="text"
-              // onChange={(e) => setSubTitle(e.target.value)}
-              placeholder="Password Confirmation"
-              className="border-b-2 pr-24 block"
-            />
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              // className="px-5 py-2 bg-blue-500 rounded-full text-white font-bold text-l tracking-wide"
+              className="px-5 py-2 border-2 border-gray-400 rounded-full text-gray-400 font-bold text-l tracking-wide uppercase"
+            >
+              Login
+            </button>
           </div>
-          <button
-            type="submit"
-            className="px-5 py-2 bg-blue-500 rounded-full text-white font-bold text-l tracking-wide"
-          >
-            Login
-          </button>
         </form>
       </div>
     </div>
