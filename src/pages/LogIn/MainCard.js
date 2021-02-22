@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import loginService from '../../services/login';
 import { setUser } from '../../reducers/loggedUserReducer';
 import { useDispatch } from 'react-redux';
@@ -10,6 +10,12 @@ const MainCard = () => {
 
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const userInputRef = useRef(null);
+
+  useEffect(() => {
+    userInputRef.current.focus();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,6 +50,7 @@ const MainCard = () => {
               onChange={(e) => setUsername(e.target.value)}
               placeholder="Username"
               className="border-b-2 pr-20 block"
+              ref={userInputRef}
             />
           </div>
           <div className="">

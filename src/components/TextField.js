@@ -25,7 +25,7 @@ const TextField = ({
         />
         <button
           type="submit"
-          className="px-5 py-1 border-2 border-gray-400 rounded-full text-gray-400 font-semibold text-l tracking-wide uppercase"
+          className="px-5 py-1 border-2 border-gray-400 rounded-full text-gray-400 font-semibold text-l"
         >
           {btnText}
         </button>
