@@ -1,13 +1,14 @@
-import React from 'react';
+import { useState } from 'react';
 import { useLocation } from 'react-router';
-import BlogCard from './BlogCard';
-import BlogSuggest from './BlogSuggest';
+import BlogSuggest from '../BlogSuggest';
+import List from './List';
+import PageTurn from './PageTurn';
 
 const BlogList = ({ blogs, edit, textFilter }) => {
+  const [page, setPage] = useState(1);
   // this needs to change to handle arrays shorter than 9 - might be easy to map if using flex grid instead of all the flex box divs
   // might need to set a fixed height for the card if less than 9 blogs are given
   let location = useLocation();
-  console.log(location);
 
   if (textFilter !== '') {
     const filteredBlogs = blogs.filter((blog) =>
@@ -37,11 +38,7 @@ const BlogList = ({ blogs, edit, textFilter }) => {
 
     return (
       <div className="w-278 mt-16 mb-32 grid grid-cols-3 gap-y-32 gap-x-8">
-        {filteredBlogs.map((blog) => {
-          return (
-            <BlogCard bg={1} blog={blog} edit={edit} key={blog._id} />
-          );
-        })}
+        <List blogs={filteredBlogs} edit={edit} />
       </div>
     );
   }
@@ -58,12 +55,15 @@ const BlogList = ({ blogs, edit, textFilter }) => {
   //keep size of card consistent with less than 7 search results?
   //PAGINATION
   return (
-    <div className="w-278 mt-16 mb-32 grid grid-cols-3 gap-y-32 gap-x-8">
-      {blogs.map((blog) => {
-        return (
-          <BlogCard bg={1} blog={blog} edit={edit} key={blog._id} />
-        );
-      })}
+    <div className="mb-20">
+      <div className="w-278 mt-16 mb-16 grid grid-cols-3 gap-y-32 gap-x-8">
+        <List blogs={blogs} edit={edit} />
+      </div>
+      <PageTurn
+        page={page}
+        setPage={setPage}
+        pageCount={blogs.length}
+      />
     </div>
   );
 };
