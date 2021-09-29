@@ -46,6 +46,15 @@ const BlogList = ({ blogs, edit, textFilter }) => {
     );
   }
 
+  if (!blogs.length) {
+    return (
+      <>
+        <h3 className="text-bluegray-500 text-xl mt-36 mb-72">
+          Nothing to display...
+        </h3>
+      </>
+    );
+  }
   //keep size of card consistent with less than 7 search results?
   //PAGINATION
   return (
