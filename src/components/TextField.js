@@ -1,22 +1,15 @@
 import React, { useState } from 'react';
 
-const TextField = ({
-  placeholderText,
-  btnText,
-  setFilter,
-  setTextFilter,
-}) => {
+const TextField = ({ placeholderText, btnText, submitFn }) => {
   const [inputText, setInputText] = useState('');
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTextFilter(inputText);
-    // setInputText('');
-    inputText !== '' && setFilter('');
+    submitFn(inputText);
   };
 
   return (
     <div className="p-10 flex items-end">
-      <form onSubmit={(e) => handleSubmit(e)} className="space-x-9">
+      <form onSubmit={handleSubmit} className="space-x-9">
         <input
           type="text"
           onChange={(e) => setInputText(e.target.value)}

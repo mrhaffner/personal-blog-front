@@ -45,6 +45,7 @@ const MainCard = () => {
           <TextField
             placeholderText="Email Address"
             btnText="Subscribe"
+            submitFn={(inputText) => console.log(inputText)}
           />
         </div>
       </div>

@@ -11,6 +11,11 @@ const Filter = ({ filter, setFilter, setTextFilter }) => {
     setTextFilter('');
   };
 
+  const submitFn = (inputText) => {
+    setTextFilter(inputText);
+    inputText !== '' && setFilter('');
+  };
+
   return (
     <div className="w-full">
       <nav className="flex justify-between">
@@ -42,8 +47,7 @@ const Filter = ({ filter, setFilter, setTextFilter }) => {
           <TextField
             placeholderText="Search Articles by Title..."
             btnText="Search"
-            setTextFilter={setTextFilter}
-            setFilter={setFilter}
+            submitFn={submitFn}
           />
         </div>
       </nav>

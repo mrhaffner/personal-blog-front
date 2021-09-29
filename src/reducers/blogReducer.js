@@ -68,9 +68,7 @@ export const addBlog = (blog) => {
 
 export const editBlog = (id, blog) => {
   return async (dispatch) => {
-    console.log(id, blog);
     const updatedBlog = await blogService.editPost(id, blog);
-    console.log('hi');
     dispatch({
       type: 'EDIT_BLOG',
       updatedBlog,
