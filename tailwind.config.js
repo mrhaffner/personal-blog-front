@@ -10,7 +10,7 @@ module.exports = {
         'blog-card1': "url('./img/blog-card1.jpg')",
         'blog-card2': "url('./img/blog-card2.jpg')",
         'blog-card3': "url('./img/blog-card3.jpg')",
-        'hero-pattern': "url('./img/hero-pattern.jpg')",
+        'hero-pattern': "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./img/hero-pattern.jpg')",
         'picture-card1': "url('./img/picture-card1.jpg')",
         'picture-card2': "url('./img/picture-card2.jpg')",
         'picture-card3': "url('./img/picture-card3.jpg')",

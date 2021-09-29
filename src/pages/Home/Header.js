@@ -5,10 +5,10 @@ import bgImg from '../../img/hero-pattern.jpg';
 const Header = () => {
   return (
     <div
-      className="bg-fixed h-hero text-white"
-      style={{
-        background: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${bgImg}) center center`,
-      }}
+      className="bg-fixed h-hero text-white bg-hero-pattern"
+      // style={{
+      //   background: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${bgImg}) center center`,
+      // }}
     >
       <Nav />
       <div className="flex justify-center pt-72">
