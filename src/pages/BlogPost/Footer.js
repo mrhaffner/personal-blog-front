@@ -1,10 +1,10 @@
 import React from 'react';
-import PreviewCard from './PreviewCard';
 import { useSelector } from 'react-redux';
+import BlogSuggest from '../../components/BlogSuggest';
 
 const Footer = () => {
   const blogs = useSelector((state) => state.blogs);
-
+  console.log(blogs);
   //update loading - probably use a skeleton or something
   if (!blogs.length) {
     return <div>Loading</div>;
@@ -17,11 +17,7 @@ const Footer = () => {
         <h2 className="font-bold text-3xl mb-20">
           For Your Consideration
         </h2>
-        <div className="flex justify-between w-full">
-          <PreviewCard bg={1} blog={blogs[0]} />
-          <PreviewCard bg={2} blog={blogs[1]} />
-          <PreviewCard bg={3} blog={blogs[2]} />
-        </div>
+        <BlogSuggest blogs={blogs} />
       </div>
     </div>
   );
