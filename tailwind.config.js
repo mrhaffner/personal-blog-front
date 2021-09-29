@@ -35,6 +35,7 @@ module.exports = {
         violet: colors.violet,
         fuchsia: colors.fushcia,
         rose: colors.rose,
+        fade: "#00000040"
       },
       height: {
         88: '22rem',
@@ -63,5 +64,6 @@ module.exports = {
       zIndex: ['hover']
     },
   },
-  plugins: [],
+  plugins: [
+  ],
 }
