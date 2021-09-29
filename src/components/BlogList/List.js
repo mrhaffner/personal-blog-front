@@ -1,9 +1,13 @@
 import BlogCard from '../BlogCard';
 
-const List = ({ blogs, edit }) => {
+const List = ({ blogs, edit, page }) => {
+  const end = page * 9;
+  const begin = end - 9;
+  const currentBlogs = blogs.slice(begin, end);
+
   return (
     <div className="w-278 mt-16 mb-32 grid grid-cols-3 gap-y-32 gap-x-8">
-      {blogs.map((blog) => {
+      {currentBlogs.map((blog) => {
         return (
           <BlogCard bg={1} blog={blog} edit={edit} key={blog._id} />
         );

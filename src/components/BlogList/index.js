@@ -10,6 +10,11 @@ const BlogList = ({ blogs, edit, textFilter }) => {
   // might need to set a fixed height for the card if less than 9 blogs are given
   let location = useLocation();
 
+  const pageCount =
+    blogs.length % 9 === 0
+      ? blogs.length / 9
+      : Math.floor(blogs.length / 9) + 1;
+
   if (textFilter !== '') {
     const filteredBlogs = blogs.filter((blog) =>
       blog.title.toLowerCase().includes(textFilter.toLowerCase()),
@@ -32,13 +37,16 @@ const BlogList = ({ blogs, edit, textFilter }) => {
         </>
       );
     }
-    //add message that nothing was found?
     //keep size of card consistent with less than 7 search results?
-    //PAGINATION
 
     return (
-      <div className="w-278 mt-16 mb-32 grid grid-cols-3 gap-y-32 gap-x-8">
-        <List blogs={filteredBlogs} edit={edit} />
+      <div className="w-278 mt-16 mb-16 grid grid-cols-3 gap-y-32 gap-x-8">
+        <List blogs={filteredBlogs} edit={edit} page={page} />
+        <PageTurn
+          page={page}
+          setPage={setPage}
+          pageCount={blogs.length}
+        />
       </div>
     );
   }
@@ -53,17 +61,13 @@ const BlogList = ({ blogs, edit, textFilter }) => {
     );
   }
   //keep size of card consistent with less than 7 search results?
-  //PAGINATION
+
   return (
     <div className="mb-20">
       <div className="w-278 mt-16 mb-16 grid grid-cols-3 gap-y-32 gap-x-8">
-        <List blogs={blogs} edit={edit} />
+        <List blogs={blogs} edit={edit} page={page} />
       </div>
-      <PageTurn
-        page={page}
-        setPage={setPage}
-        pageCount={blogs.length}
-      />
+      <PageTurn page={page} setPage={setPage} pageCount={pageCount} />
     </div>
   );
 };
