@@ -2,8 +2,8 @@ import React from 'react';
 import TextField from '../../components/TextField';
 
 const Filter = ({ filter, setFilter, setTextFilter }) => {
-  const classActive = `px-5 py-1 bg-blue-500 rounded-full text-white font-bold text-l tracking-wide`;
-  const classInactive = `px-5 py-1 font-bold text-l tracking-wide`;
+  const classActive = `px-5 py-1 bg-blue-500 rounded-full text-white font-bold text-l tracking-wide focus:outline-none`;
+  const classInactive = `px-5 py-1 font-bold text-l tracking-wide focus:outline-none`;
 
   const handleClick = (e) => {
     setFilter(e.target.name);

@@ -49,7 +49,7 @@ const Form = ({ blog }) => {
           type="text"
           onChange={(e) => setTitle(e.target.value)}
           value={title}
-          className="border-b-2 pr-12 block "
+          className="border-b-2 pr-12 block focus:outline-none"
         />
       </div>
       <div className="space-y-1">
@@ -58,7 +58,7 @@ const Form = ({ blog }) => {
           type="text"
           onChange={(e) => setSubTitle(e.target.value)}
           value={subTitle}
-          className="border-b-2 pr-12 block"
+          className="border-b-2 pr-12 block focus:outline-none"
         />
       </div>
       <div className="space-y-3">
@@ -69,14 +69,14 @@ const Form = ({ blog }) => {
         <div className="space-x-3">
           <button
             type="submit"
-            className="px-5 py-2 bg-blue-500 rounded-full text-white font-bold text-l tracking-wide"
+            className="px-5 py-2 bg-blue-500 rounded-full text-white font-bold text-l tracking-wide focus:outline-none"
           >
             Update
           </button>
           <button
             type="button"
             onClick={() => handlePubStatus()}
-            className="px-5 py-2 bg-amber-500 rounded-full text-white font-bold text-l tracking-wide"
+            className="px-5 py-2 bg-amber-500 rounded-full text-white font-bold text-l tracking-wide focus:outline-none"
           >
             {blog.isPublished ? 'Unpublish' : 'Publish'}
           </button>
@@ -84,7 +84,7 @@ const Form = ({ blog }) => {
         <button
           type="button"
           onClick={() => handleDelete()}
-          className="px-5 py-2 bg-red-500 rounded-full text-white font-bold text-l tracking-wide"
+          className="px-5 py-2 bg-red-500 rounded-full text-white font-bold text-l tracking-wide focus:outline-none"
         >
           Delete
         </button>

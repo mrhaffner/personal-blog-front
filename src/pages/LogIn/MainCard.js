@@ -49,7 +49,7 @@ const MainCard = () => {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               placeholder="Username"
-              className="border-b-2 pr-20 block"
+              className="border-b-2 pr-20 block focus:outline-none"
               ref={userInputRef}
             />
           </div>
@@ -59,13 +59,13 @@ const MainCard = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
-              className="border-b-2 pr-20 block"
+              className="border-b-2 pr-20 block focus:outline-none"
             />
           </div>
           <div className="flex justify-center pt-6">
             <button
               type="submit"
-              className="px-5 py-2 border-2 border-gray-400 rounded-full text-gray-400 font-bold text-l tracking-wide uppercase"
+              className="px-5 py-2 border-2 border-gray-400 rounded-full text-gray-400 font-bold text-l tracking-wide uppercase focus:outline-none"
             >
               Login
             </button>

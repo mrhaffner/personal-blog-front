@@ -9,7 +9,7 @@ const WideCard = ({ blog }) => {
         <h3 className="text-xl font-semibold mb-4">{blog.title}</h3>
         <p className="text-bluegray-300 mb-6">{blog.subTitle}</p>
         <Link to={linkUrl}>
-          <button className="px-5 py-2 bg-green-500 rounded-full text-white font-bold text-l tracking-wide uppercase">
+          <button className="px-5 py-2 bg-green-500 rounded-full text-white font-bold text-l tracking-wide uppercase focus:outline-none">
             Read Post
           </button>
         </Link>

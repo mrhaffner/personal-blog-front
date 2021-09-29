@@ -36,7 +36,7 @@ const Form = () => {
           type="text"
           onChange={(e) => setTitle(e.target.value)}
           placeholder="something amazing..."
-          className="border-b-2 pr-12 block "
+          className="border-b-2 pr-12 block focus:outline-none"
         />
       </div>
       <div className="space-y-1">
@@ -45,7 +45,7 @@ const Form = () => {
           type="text"
           onChange={(e) => setSubTitle(e.target.value)}
           placeholder="not too long now..."
-          className="border-b-2 pr-12 block"
+          className="border-b-2 pr-12 block focus:outline-none"
         />
       </div>
       <div className="space-y-3">
@@ -54,7 +54,7 @@ const Form = () => {
       </div>
       <button
         type="submit"
-        className="px-5 py-2 bg-blue-500 rounded-full text-white font-bold text-l tracking-wide"
+        className="px-5 py-2 bg-blue-500 rounded-full text-white font-bold text-l tracking-wide focus:outline-none"
       >
         Save
       </button>
