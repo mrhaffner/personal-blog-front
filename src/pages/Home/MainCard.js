@@ -6,11 +6,16 @@ import TextField from '../../components/TextField';
 import LatestPosts from './LatestPosts';
 import { useSelector } from 'react-redux';
 
-const MainCard = () => {
+const MainCard = ({ toast }) => {
   const [filter, setFilter] = useState('Latest');
   const [textFilter, setTextFilter] = useState('');
   const blogs = useSelector((state) => state.blogs);
   const filterRef = useRef();
+
+  const handleEmailSubmit = (inputText) => {
+    console.log(inputText);
+    toast.success('Thank you for subscribing.');
+  };
 
   return (
     <div className="mx-8 -mt-20 bg-white shadow-custom rounded-2xl flex flex-col items-center text-gray-700">
@@ -50,7 +55,7 @@ const MainCard = () => {
           <TextField
             placeholderText="Email Address"
             btnText="Subscribe"
-            submitFn={(inputText) => console.log(inputText)}
+            submitFn={handleEmailSubmit}
           />
         </div>
       </div>

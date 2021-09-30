@@ -7,8 +7,9 @@ import {
   publishBlog,
   removeBlog,
 } from '../../reducers/blogReducer';
+import 'react-toastify/dist/ReactToastify.css';
 
-const Form = ({ blog }) => {
+const Form = ({ blog, toast }) => {
   const [title, setTitle] = useState(blog.title);
   const [subTitle, setSubTitle] = useState(blog.subTitle);
   const [text, setText] = useState(blog.text);
@@ -23,17 +24,22 @@ const Form = ({ blog }) => {
     e.preventDefault();
     const blogObject = { ...blog, title, subTitle, text };
     dispatch(editBlog(blog._id, blogObject));
+    toast.success('Post updated!');
   };
 
   // add a warning
   const handlePubStatus = () => {
     const publishObject = { isPublished: !blog.isPublished };
     dispatch(publishBlog(blog._id, publishObject));
+    toast.success(
+      `Post ${blog.isPublished ? 'Unpublished' : 'Published'}`,
+    );
   };
 
   // add a warning
   const handleDelete = () => {
     dispatch(removeBlog(blog._id));
+    toast.success('Post deleted...');
     history.push('/admin');
   };
 

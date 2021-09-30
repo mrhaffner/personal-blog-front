@@ -4,7 +4,6 @@ import BlogSuggest from '../../components/BlogSuggest';
 
 const Footer = () => {
   const blogs = useSelector((state) => state.blogs);
-  console.log(blogs);
   //update loading - probably use a skeleton or something
   if (!blogs.length) {
     return <div>Loading</div>;

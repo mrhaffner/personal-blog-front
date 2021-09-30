@@ -4,11 +4,14 @@ import MDEditor from '@uiw/react-md-editor';
 import { useDispatch, useStore } from 'react-redux';
 import { addBlog } from '../../reducers/blogReducer';
 import TitleInput from '../../components/TitleInput';
+import 'react-toastify/dist/ReactToastify.css';
 
-const Form = () => {
+const Form = ({ toast }) => {
   const [title, setTitle] = useState('');
   const [subTitle, setSubTitle] = useState('');
   const [text, setText] = useState('## Use Markdown here!');
+
+  //error message? 'Something went wrong'
 
   let history = useHistory();
   const dispatch = useDispatch();
@@ -26,6 +29,7 @@ const Form = () => {
     //   store.getState().blogs.length - 1
     // ].slug;
     const { slug } = store.getState().blogs.slice(-1)[0];
+    toast.success('Post saved!');
     history.push(`/admin/${slug}`);
   };
 

@@ -2,11 +2,11 @@ import React from 'react';
 import MainCard from './MainCard';
 import NavHeader from '../../components/NavHeader';
 
-const NewPost = () => {
+const NewPost = ({ toast }) => {
   return (
     <div className="bg-lightblue-50 h-full pb-16">
       <NavHeader />
-      <MainCard />
+      <MainCard toast={toast} />
     </div>
   );
 };

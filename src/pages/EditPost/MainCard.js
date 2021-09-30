@@ -3,7 +3,7 @@ import Form from './Form';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-const MainCard = () => {
+const MainCard = ({ toast }) => {
   const blogs = useSelector((state) => state.blogs);
   const { slug } = useParams();
   const blog =
@@ -20,7 +20,7 @@ const MainCard = () => {
       <div className="w-278 flex flex-col items-center mt-16">
         <h1 className="font-bold text-4xl">Update Your Post</h1>
         <div className="w-184">
-          <Form blog={blog} />
+          <Form toast={toast} blog={blog} />
         </div>
       </div>
     </div>

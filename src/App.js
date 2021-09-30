@@ -9,6 +9,7 @@ import { getPublishedBlogs } from './reducers/blogReducer';
 import { setUser } from './reducers/loggedUserReducer';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -29,26 +30,37 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <Switch>
-      <Route path="/admin/new">
-        {loggedUser ? <NewPost /> : <Redirect to="/login" />}
-      </Route>
-      <Route path="/admin/:slug">
-        {loggedUser ? <EditPost /> : <Redirect to="/login" />}
-      </Route>
-      <Route path="/blogs/:slug">
-        <BlogPost />
-      </Route>
-      <Route path="/admin">
-        {loggedUser ? <Admin /> : <Redirect to="/login" />}
-      </Route>
-      <Route path="/login">
-        {loggedUser ? <Redirect to="/admin" /> : <LogIn />}
-      </Route>
-      <Route path="/">
-        <Home />
-      </Route>
-    </Switch>
+    <>
+      <Switch>
+        <Route path="/admin/new">
+          {loggedUser ? (
+            <NewPost toast={toast} />
+          ) : (
+            <Redirect to="/login" />
+          )}
+        </Route>
+        <Route path="/admin/:slug">
+          {loggedUser ? (
+            <EditPost toast={toast} />
+          ) : (
+            <Redirect to="/login" />
+          )}
+        </Route>
+        <Route path="/blogs/:slug">
+          <BlogPost />
+        </Route>
+        <Route path="/admin">
+          {loggedUser ? <Admin /> : <Redirect to="/login" />}
+        </Route>
+        <Route path="/login">
+          {loggedUser ? <Redirect to="/admin" /> : <LogIn />}
+        </Route>
+        <Route path="/">
+          <Home toast={toast} />
+        </Route>
+      </Switch>
+      <ToastContainer position="bottom-left" />
+    </>
   );
 };
 
