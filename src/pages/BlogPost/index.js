@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import MainCard from './MainCard';
 import Header from './Header';
 import Footer from './Footer';
@@ -6,6 +6,12 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const BlogPost = () => {
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setLoading(false);
+  });
+
   const blogs = useSelector((state) => state.blogs);
   const { slug } = useParams();
   const blog =
@@ -14,7 +20,7 @@ const BlogPost = () => {
       : null;
 
   //update loading - probably use a skeleton or something
-  if (!blog) {
+  if (loading) {
     return <div>Loading</div>;
   }
 

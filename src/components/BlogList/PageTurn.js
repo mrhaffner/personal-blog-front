@@ -18,7 +18,7 @@ const PageTurn = ({ page, setPage, pageCount, yPos }) => {
           Last Page
         </button>
       ) : (
-        <div className="text-white select-none">Last Page</div>
+        <div className="text-white select-none">Prev Page</div>
       )}
       <div className="text-bluegray-500 font-semibold">{page}</div>
       {page < pageCount ? (
