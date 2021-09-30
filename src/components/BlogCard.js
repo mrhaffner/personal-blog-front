@@ -9,7 +9,7 @@ const BlogCard = ({ bg, blog, edit }) => {
   return (
     <div className="w-88">
       <div className={imgClass}></div>
-      <h3 className="text-xl font-semibold mb-4">
+      <h3 className="text-xl font-semibold">
         <Link to={linkUrl}>{blog.title}</Link>
       </h3>
       <p className="text-bluegray-500">{blog.subTitle}</p>

@@ -9,6 +9,7 @@ import {
 } from '../../reducers/blogReducer';
 
 const Form = ({ blog }) => {
+  console.log(blog);
   const [title, setTitle] = useState(blog.title);
   const [subTitle, setSubTitle] = useState(blog.subTitle);
   const [text, setText] = useState(blog.text);
