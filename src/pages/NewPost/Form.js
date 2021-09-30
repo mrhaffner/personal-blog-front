@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import MDEditor from '@uiw/react-md-editor';
 import { useDispatch, useStore } from 'react-redux';
 import { addBlog } from '../../reducers/blogReducer';
+import TitleInput from '../../components/TitleInput';
 
 const Form = () => {
   const [title, setTitle] = useState('');
@@ -12,6 +13,10 @@ const Form = () => {
   let history = useHistory();
   const dispatch = useDispatch();
   const store = useStore();
+
+  const changeFn = (stateUpdate) => (e) => {
+    stateUpdate(e.target.value);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,24 +35,16 @@ const Form = () => {
       onSubmit={(e) => handleSubmit(e)}
       className="self-start w-full space-y-7 my-16"
     >
-      <div className="space-y-1">
-        <label htmlFor="Title">Title</label>
-        <input
-          type="text"
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="something amazing..."
-          className="border-b-2 pr-12 block focus:outline-none"
-        />
-      </div>
-      <div className="space-y-1">
-        <label htmlFor="Sub Title">Sub Title</label>
-        <input
-          type="text"
-          onChange={(e) => setSubTitle(e.target.value)}
-          placeholder="not too long now..."
-          className="border-b-2 pr-12 block focus:outline-none"
-        />
-      </div>
+      <TitleInput
+        text="Title"
+        placeholder="something amazing..."
+        changeFn={changeFn(setTitle)}
+      />
+      <TitleInput
+        text="Sub Title"
+        placeholder="not too long now..."
+        changeFn={changeFn(setSubTitle)}
+      />
       <div className="space-y-3">
         <label htmlFor="Article Body">Article Body</label>
         <MDEditor value={text} onChange={setText} />
