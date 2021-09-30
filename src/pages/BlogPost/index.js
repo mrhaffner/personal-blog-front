@@ -20,7 +20,7 @@ const BlogPost = () => {
       : null;
 
   //update loading - probably use a skeleton or something
-  if (loading) {
+  if (loading || !blog) {
     return <div>Loading</div>;
   }
 
