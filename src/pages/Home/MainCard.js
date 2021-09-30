@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import BlogList from '../../components/BlogList';
 import Author from './Author';
 import Filter from './Filter';
@@ -10,10 +10,11 @@ const MainCard = () => {
   const [filter, setFilter] = useState('Latest');
   const [textFilter, setTextFilter] = useState('');
   const blogs = useSelector((state) => state.blogs);
+  const filterRef = useRef();
 
   return (
     <div className="mx-8 -mt-20 bg-white shadow-custom rounded-2xl flex flex-col items-center text-gray-700">
-      <div className="mt-12 w-278">
+      <div className="mt-12 w-278" ref={filterRef}>
         <Filter
           setFilter={setFilter}
           filter={filter}
@@ -23,7 +24,11 @@ const MainCard = () => {
       {filter === 'Latest' ? (
         <LatestPosts blogs={blogs} />
       ) : (
-        <BlogList blogs={blogs} textFilter={textFilter} />
+        <BlogList
+          blogs={blogs}
+          textFilter={textFilter}
+          heightRef={filterRef}
+        />
       )}
       <div className="w-full bg-green-700 flex flex-col items-center mb-32 pb-44 pt-32">
         <h2 className="font-bold text-2xl text-white mb-20">

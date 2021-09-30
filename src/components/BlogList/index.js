@@ -4,7 +4,7 @@ import BlogSuggest from '../BlogSuggest';
 import List from './List';
 import PageTurn from './PageTurn';
 
-const BlogList = ({ blogs, edit, textFilter }) => {
+const BlogList = ({ blogs, edit, textFilter, heightRef }) => {
   const [page, setPage] = useState(1);
   // this needs to change to handle arrays shorter than 9 - might be easy to map if using flex grid instead of all the flex box divs
   // might need to set a fixed height for the card if less than 9 blogs are given
@@ -38,14 +38,20 @@ const BlogList = ({ blogs, edit, textFilter }) => {
       );
     }
     //keep size of card consistent with less than 7 search results?
-
+    const filteredPageCount =
+      filteredBlogs.length % 9 === 0
+        ? filteredBlogs.length / 9
+        : Math.floor(filteredBlogs.length / 9) + 1;
     return (
-      <div className="w-278 mt-16 mb-16 grid grid-cols-3 gap-y-32 gap-x-8">
-        <List blogs={filteredBlogs} edit={edit} page={page} />
+      <div className="mb-20">
+        <div className="w-278 mt-16 mb-16 grid grid-cols-3 gap-y-32 gap-x-8">
+          <List blogs={filteredBlogs} edit={edit} page={page} />
+        </div>
         <PageTurn
           page={page}
           setPage={setPage}
-          pageCount={blogs.length}
+          pageCount={filteredPageCount}
+          yPos={heightRef.current?.offsetTop - 100}
         />
       </div>
     );
@@ -67,7 +73,12 @@ const BlogList = ({ blogs, edit, textFilter }) => {
       <div className="w-278 mt-16 mb-16 grid grid-cols-3 gap-y-32 gap-x-8">
         <List blogs={blogs} edit={edit} page={page} />
       </div>
-      <PageTurn page={page} setPage={setPage} pageCount={pageCount} />
+      <PageTurn
+        page={page}
+        setPage={setPage}
+        pageCount={pageCount}
+        yPos={heightRef.current?.offsetTop - 100}
+      />
     </div>
   );
 };

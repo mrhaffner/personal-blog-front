@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import BlogList from '../../components/BlogList';
 import Filter from './Filter';
 import { useSelector } from 'react-redux';
@@ -15,10 +15,12 @@ const MainCard = () => {
       ? blogs.filter((blog) => !blog.isPublished)
       : blogs;
 
+  const filterRef = useRef();
+
   return (
     <div className="mx-8 mt-admin bg-white shadow-custom rounded-2xl flex flex-col items-center text-gray-700">
       <div className="w-278 flex flex-col items-center mt-12">
-        <div className="w-full">
+        <div className="w-full" ref={filterRef}>
           <Filter
             setFilter={setFilter}
             filter={filter}
@@ -29,6 +31,7 @@ const MainCard = () => {
           blogs={filteredBlogs}
           edit={true}
           textFilter={textFilter}
+          heightRef={filterRef}
         />
       </div>
     </div>
