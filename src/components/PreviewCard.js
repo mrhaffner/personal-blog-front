@@ -8,11 +8,11 @@ const PreviewCard = ({ bg, blog }) => {
     <div className="w-88 bg-white rounded-lg shadow-custom">
       <div className={imgClass}></div>
       <Link to={linkUrl}>
-        <h3 className="text-xl font-semibold mb-4 px-6">
+        <h3 className="text-xl font-semibold mb-2 px-6">
           {blog.title}
         </h3>
       </Link>
-      <p className="text-bluegray-500 mb-10 px-6">{blog.subTitle}</p>
+      <p className="text-bluegray-500 mb-12 px-6">{blog.subTitle}</p>
     </div>
   );
 };
