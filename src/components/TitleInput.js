@@ -1,6 +1,11 @@
 const TitleInput = ({ text, placeholder, changeFn }) => (
   <div className="space-y-1">
-    <label htmlFor={text}>{text}</label>
+    <label
+      htmlFor={text}
+      className="font-semibold text-gray-600 tracking-wide"
+    >
+      {text}
+    </label>
     <input
       type="text"
       onChange={changeFn}

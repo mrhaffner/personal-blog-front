@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import MDEditor from '@uiw/react-md-editor';
 import { useDispatch, useStore } from 'react-redux';
@@ -6,15 +6,18 @@ import { addBlog } from '../../reducers/blogReducer';
 import TitleInput from '../../components/TitleInput';
 import 'react-toastify/dist/ReactToastify.css';
 import InputError from '../../components/InputError';
+import useBlogFormError from '../../hooks/useBlogFormError';
 
 const Form = ({ toast }) => {
   const [title, setTitle] = useState('');
   const [subTitle, setSubTitle] = useState('');
   const [text, setText] = useState('## Use Markdown here!');
-  const [textError, setTextError] = useState(false);
-  const [titleError, setTitleError] = useState(false);
-  const [subTitleError, setSubTitleError] = useState(false);
-  const [failedSubmit, setFailedSubmit] = useState(false);
+  const {
+    titleError,
+    subTitleError,
+    textError,
+    setFailedSubmit,
+  } = useBlogFormError(text, title, subTitle);
 
   let history = useHistory();
   const dispatch = useDispatch();
@@ -40,15 +43,6 @@ const Form = ({ toast }) => {
     toast.success('Post saved!');
     history.push(`/admin/${slug}`);
   };
-
-  useEffect(() => {
-    if (failedSubmit) {
-      setTextError(text ? false : true);
-      setTitleError(title ? false : true);
-      setSubTitleError(subTitle ? false : true);
-      setFailedSubmit(false);
-    }
-  }, [failedSubmit]);
 
   return (
     <form
@@ -77,7 +71,12 @@ const Form = ({ toast }) => {
       </div>
 
       <div className="">
-        <label htmlFor="Article Body">Article Body</label>
+        <label
+          htmlFor="Article Body"
+          className="font-semibold text-gray-600 tracking-wide"
+        >
+          Article Body
+        </label>
         <MDEditor value={text} onChange={setText} className="mt-3" />
         {textError && (
           <InputError text="Please enter some text" spacing="mt-1" />

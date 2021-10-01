@@ -8,11 +8,19 @@ import {
   removeBlog,
 } from '../../reducers/blogReducer';
 import 'react-toastify/dist/ReactToastify.css';
+import useBlogFormError from '../../hooks/useBlogFormError';
+import InputError from '../../components/InputError';
 
 const Form = ({ blog, toast }) => {
   const [title, setTitle] = useState(blog.title);
   const [subTitle, setSubTitle] = useState(blog.subTitle);
   const [text, setText] = useState(blog.text);
+  const {
+    titleError,
+    subTitleError,
+    textError,
+    setFailedSubmit,
+  } = useBlogFormError(text, title, subTitle);
 
   let history = useHistory();
 
@@ -20,10 +28,20 @@ const Form = ({ blog, toast }) => {
 
   // change slug and redirect if title is different!
   // add some sort of indication that it was updated
-  const handleEdit = (e) => {
+  const handleEdit = async (e) => {
     e.preventDefault();
     const blogObject = { ...blog, title, subTitle, text };
-    dispatch(editBlog(blog._id, blogObject));
+    try {
+      if (!title || !subTitle || !text) {
+        throw new Error('input field missing');
+      }
+      await dispatch(editBlog(blog._id, blogObject));
+    } catch (e) {
+      setFailedSubmit(true);
+      console.log(e);
+      return;
+    }
+
     toast.success('Post updated!');
   };
 
@@ -62,13 +80,16 @@ const Form = ({ blog, toast }) => {
           value={title}
           className="border-b-2 focus:border-gray-400 pr-12 block focus:outline-none w-128"
         />
+        {titleError && (
+          <InputError text="Please enter a title" spacing="mt-1" />
+        )}
       </div>
       <div className="space-y-1">
         <label
-          htmlFor="Sub Title"
+          htmlFor="Subtitle"
           className="font-semibold text-gray-600 tracking-wide"
         >
-          Sub Title
+          Subtitle
         </label>
         <input
           type="text"
@@ -76,15 +97,21 @@ const Form = ({ blog, toast }) => {
           value={subTitle}
           className="border-b-2 focus:border-gray-400 pr-12 block focus:outline-none w-128"
         />
+        {subTitleError && (
+          <InputError text="Please enter a subtitle" spacing="mt-1" />
+        )}
       </div>
-      <div className="space-y-3">
+      <div>
         <label
           htmlFor="Article Body"
           className="font-semibold text-gray-600 tracking-wide"
         >
           Article Body
         </label>
-        <MDEditor value={text} onChange={setText} />
+        <MDEditor value={text} onChange={setText} className="mt-3" />
+        {textError && (
+          <InputError text="Please enter some text" spacing="mt-1" />
+        )}
       </div>
       <div className="flex justify-between">
         <div className="space-x-3">
