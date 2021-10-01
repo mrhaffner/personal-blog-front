@@ -55,7 +55,7 @@ const Form = ({ toast }) => {
       </div>
       <button
         type="submit"
-        className="px-5 py-2 bg-blue-500 rounded-full text-white font-bold text-l tracking-wide focus:outline-none"
+        className="px-5 py-2 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 rounded-full text-white font-bold text-l tracking-wide focus:outline-none"
       >
         Save
       </button>

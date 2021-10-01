@@ -14,11 +14,11 @@ const TextField = ({ placeholderText, btnText, submitFn }) => {
           type="text"
           onChange={(e) => setInputText(e.target.value)}
           placeholder={placeholderText}
-          className="border-b-2 pr-12 focus:outline-none"
+          className="border-b-2 focus:border-gray-400 pr-12 focus:outline-none"
         />
         <button
           type="submit"
-          className="px-5 py-1 border-2 border-gray-400 hover:border-gray-500 active:border-gray-600 rounded-full text-gray-400 hover:text-gray-500 font-semibold text-l focus:outline-none"
+          className="px-5 py-1 border-2 border-gray-400 hover:border-gray-500 active:bg-gray-100 rounded-full text-gray-400 hover:text-gray-500 font-semibold text-l focus:outline-none"
         >
           {btnText}
         </button>
