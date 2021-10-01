@@ -65,9 +65,9 @@ module.exports = {
   },
   variants: {
     extend: {
+      borderColor: ['active'],
       zIndex: ['hover']
     },
   },
-  plugins: [
-  ],
+  plugins: [],
 }

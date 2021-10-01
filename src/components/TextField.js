@@ -18,7 +18,7 @@ const TextField = ({ placeholderText, btnText, submitFn }) => {
         />
         <button
           type="submit"
-          className="px-5 py-1 border-2 border-gray-400 rounded-full text-gray-400 font-semibold text-l focus:outline-none"
+          className="px-5 py-1 border-2 border-gray-400 hover:border-gray-500 active:border-gray-600 rounded-full text-gray-400 hover:text-gray-500 font-semibold text-l focus:outline-none"
         >
           {btnText}
         </button>
