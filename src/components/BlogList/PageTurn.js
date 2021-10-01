@@ -12,7 +12,7 @@ const PageTurn = ({ page, setPage, pageCount, yPos }) => {
     <div className="flex justify-center space-x-52">
       {page > 1 ? (
         <button
-          className="text-bluegray-500 font-semibold focus:outline-none"
+          className="text-bluegray-500 font-semibold focus:outline-none hover:text-bluegray-700"
           onClick={handlePrevPage}
         >
           Last Page
@@ -23,7 +23,7 @@ const PageTurn = ({ page, setPage, pageCount, yPos }) => {
       <div className="text-bluegray-500 font-semibold">{page}</div>
       {page < pageCount ? (
         <button
-          className="text-bluegray-500 font-semibold focus:outline-none"
+          className="text-bluegray-500 font-semibold focus:outline-none hover:text-bluegray-700"
           onClick={handleNextPage}
         >
           Next Page
