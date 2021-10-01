@@ -15,7 +15,7 @@ const MainCard = ({ article }) => {
         <div className="flex items-center space-x-6 border-t py-4 mt-12 mb-20">
           <div className="bg-author bg-center bg-cover w-24 h-24 rounded-full shadow-custom"></div>
           <div>
-            <h3 className="text-l font-semibold">Matt Haffner</h3>
+            <h3 className="text-l font-semibold">Stevesie Ryan</h3>
             <p className="text-bluegray-500 w-128">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit,
               sed do eiusmod tempor incididunt ut labore et dolore

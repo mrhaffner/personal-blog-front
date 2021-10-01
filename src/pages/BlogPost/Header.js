@@ -1,10 +1,11 @@
 import React from 'react';
 import Nav from '../../components/Nav';
 
-const heroStyle = `bg-fixed h-screen text-white bg-hero-pattern${
+const num =
   Math.floor(Math.random() * (Math.floor(6) - Math.ceil(2) + 1)) +
-  Math.ceil(2)
-} bg-cover`;
+  Math.ceil(2);
+
+const heroStyle = `bg-fixed h-screen text-white bg-hero-pattern${num} bg-cover`;
 
 const Header = ({ title, subTitle }) => {
   return (

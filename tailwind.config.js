@@ -6,10 +6,16 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: theme => ({
-        'author': "url('./img/author.png')",
+        'author': "url('./img/author.jpeg')",
         'blog-card1': "url('./img/blog-card1.jpg')",
         'blog-card2': "url('./img/blog-card2.jpg')",
         'blog-card3': "url('./img/blog-card3.jpg')",
+        'blog-card4': "url('./img/blog-card4.jpg')",
+        'blog-card5': "url('./img/blog-card5.jpg')",
+        'blog-card6': "url('./img/blog-card6.jpg')",
+        'blog-card7': "url('./img/blog-card7.jpg')",
+        'blog-card8': "url('./img/blog-card8.jpg')",
+        'blog-card9': "url('./img/blog-card9.jpg')",
         'hero-pattern1': "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./img/hero-pattern1.jpg')",
         'hero-pattern2': "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./img/hero-pattern2.jpg')",
         'hero-pattern3': "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./img/hero-pattern3.jpg')",

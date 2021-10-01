@@ -7,9 +7,14 @@ const List = ({ blogs, edit, page }) => {
 
   return (
     <div className="w-278 mt-8 mb-32 grid grid-cols-3 gap-y-24 gap-x-8">
-      {currentBlogs.map((blog) => {
+      {currentBlogs.map((blog, index) => {
         return (
-          <BlogCard bg={1} blog={blog} edit={edit} key={blog._id} />
+          <BlogCard
+            bg={index + 1}
+            blog={blog}
+            edit={edit}
+            key={blog._id}
+          />
         );
       })}
     </div>
