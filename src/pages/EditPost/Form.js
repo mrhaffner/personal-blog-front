@@ -90,14 +90,14 @@ const Form = ({ blog, toast }) => {
         <div className="space-x-3">
           <button
             type="submit"
-            className="px-5 py-2 bg-blue-500 rounded-full text-white font-bold text-l tracking-wide focus:outline-none"
+            className="px-5 py-2 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 rounded-full text-white font-bold text-l tracking-wide focus:outline-none"
           >
             Update
           </button>
           <button
             type="button"
             onClick={() => handlePubStatus()}
-            className="px-5 py-2 bg-amber-500 rounded-full text-white font-bold text-l tracking-wide focus:outline-none"
+            className="px-5 py-2 bg-amber-500 hover:bg-amber-600 active:bg-amber-700 rounded-full text-white font-bold text-l tracking-wide focus:outline-none"
           >
             {blog.isPublished ? 'Unpublish' : 'Publish'}
           </button>
@@ -105,7 +105,7 @@ const Form = ({ blog, toast }) => {
         <button
           type="button"
           onClick={() => handleDelete()}
-          className="px-5 py-2 bg-red-500 rounded-full text-white font-bold text-l tracking-wide focus:outline-none"
+          className="px-5 py-2 bg-red-500 hover:bg-red-600 active:bg-red-700 rounded-full text-white font-bold text-l tracking-wide focus:outline-none"
         >
           Delete
         </button>
