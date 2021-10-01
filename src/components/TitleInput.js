@@ -5,7 +5,7 @@ const TitleInput = ({ text, placeholder, changeFn }) => (
       type="text"
       onChange={changeFn}
       placeholder={placeholder}
-      className="border-b-2 pr-12 block focus:outline-none w-128"
+      className="border-b-2 focus:border-gray-400 pr-12 block focus:outline-none w-128"
     />
   </div>
 );
