@@ -50,25 +50,40 @@ const Form = ({ blog, toast }) => {
       className="self-start w-full space-y-7 my-16"
     >
       <div className="space-y-1">
-        <label htmlFor="Title">Title</label>
+        <label
+          htmlFor="Title"
+          className="font-semibold text-gray-600 tracking-wide"
+        >
+          Title
+        </label>
         <input
           type="text"
           onChange={(e) => setTitle(e.target.value)}
           value={title}
-          className="border-b-2 pr-12 block focus:outline-none"
+          className="border-b-2 focus:border-gray-400 pr-12 block focus:outline-none w-128"
         />
       </div>
       <div className="space-y-1">
-        <label htmlFor="Sub Title">Sub Title</label>
+        <label
+          htmlFor="Sub Title"
+          className="font-semibold text-gray-600 tracking-wide"
+        >
+          Sub Title
+        </label>
         <input
           type="text"
           onChange={(e) => setSubTitle(e.target.value)}
           value={subTitle}
-          className="border-b-2 pr-12 block focus:outline-none"
+          className="border-b-2 focus:border-gray-400 pr-12 block focus:outline-none w-128"
         />
       </div>
       <div className="space-y-3">
-        <label htmlFor="Article Body">Article Body</label>
+        <label
+          htmlFor="Article Body"
+          className="font-semibold text-gray-600 tracking-wide"
+        >
+          Article Body
+        </label>
         <MDEditor value={text} onChange={setText} />
       </div>
       <div className="flex justify-between">
