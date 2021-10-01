@@ -16,12 +16,18 @@ const NavHeader = () => {
     <div className="bg-green-700 h-screen text-white">
       <nav className="flex justify-center">
         <div className="flex justify-between pt-10 w-278 font-bold text-l tracking-wide">
-          <Link to="/admin/new">+ New Post (Add Link and Icon)</Link>
+          <Link to="/admin/new" className="hover:text-bluegray-200">
+            + New Post (Add Link and Icon)
+          </Link>
           <div className="space-x-6">
-            <Link to="/admin">Admin</Link>
-            <Link to="/">Home</Link>
+            <Link to="/admin" className="hover:text-bluegray-200">
+              Admin
+            </Link>
+            <Link to="/" className="hover:text-bluegray-200">
+              Home
+            </Link>
             <p
-              className="inline cursor-pointer"
+              className="inline cursor-pointer hover:text-bluegray-200"
               onClick={() => signOut()}
             >
               Sign Out

@@ -19,19 +19,27 @@ const Nav = () => {
   return (
     <nav className="flex justify-center">
       <div className="flex justify-between pt-10 w-278 font-bold text-l tracking-wide">
-        <Link to="/">Home</Link>
+        <Link to="/" className="hover:text-bluegray-200">
+          Home
+        </Link>
         <div className="space-x-6">
           {loggedUser ? (
             <p
-              className="inline cursor-pointer"
+              className="inline cursor-pointer hover:text-bluegray-200"
               onClick={() => signOut()}
             >
               Sign Out
             </p>
           ) : (
-            <Link to="/login">Sign In (temp)</Link>
+            <Link to="/login" className="hover:text-bluegray-200">
+              Sign In (temp)
+            </Link>
           )}
-          {loggedUser && <Link to="/admin">Admin (temp)</Link>}
+          {loggedUser && (
+            <Link to="/admin" className="hover:text-bluegray-200">
+              Admin (temp)
+            </Link>
+          )}
         </div>
       </div>
     </nav>
