@@ -3,10 +3,20 @@ import loginService from '../../services/login';
 import { setUser } from '../../reducers/loggedUserReducer';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import InputError from '../../components/InputError';
+import useLoginError from '../../hooks/useLoginError';
 
 const MainCard = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const {
+    userError,
+    passwordError,
+    setFailedSubmit,
+    userErrorText,
+    setBadLogin,
+  } = useLoginError(username, password);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -19,18 +29,31 @@ const MainCard = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newUser = await loginService.login({
-      username,
-      password,
-    });
-    setUsername('');
-    setPassword('');
-    window.localStorage.setItem(
-      'loggedBlogappUser',
-      JSON.stringify(newUser),
-    );
-    dispatch(setUser(newUser));
-    history.push('/admin');
+    if (!password || !username) {
+      if (!username) {
+        setBadLogin(false);
+      }
+      setFailedSubmit(true);
+      return;
+    }
+    try {
+      const newUser = await loginService.login({
+        username,
+        password,
+      });
+      setUsername('');
+      setPassword('');
+      window.localStorage.setItem(
+        'loggedBlogappUser',
+        JSON.stringify(newUser),
+      );
+      dispatch(setUser(newUser));
+      history.push('/admin');
+    } catch (e) {
+      setBadLogin(true);
+      setFailedSubmit(true);
+      return;
+    }
   };
 
   return (
@@ -52,6 +75,9 @@ const MainCard = () => {
               className="border-b-2 pr-20 block focus:outline-none focus:border-gray-400"
               ref={userInputRef}
             />
+            {userError && (
+              <InputError text={userErrorText} spacing="mt-1" />
+            )}
           </div>
           <div className="">
             <input
@@ -61,6 +87,12 @@ const MainCard = () => {
               placeholder="Password"
               className="border-b-2 pr-20 block focus:outline-none focus:border-gray-400"
             />
+            {passwordError && (
+              <InputError
+                text="Please enter a password"
+                spacing="mt-1"
+              />
+            )}
           </div>
           <div className="flex justify-center pt-6">
             <button
