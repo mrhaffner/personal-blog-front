@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import FormButton from './FormButton';
 
 const TextField = ({
   placeholderText,
@@ -8,8 +9,7 @@ const TextField = ({
   type,
 }) => {
   const [inputText, setInputText] = useState('');
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     submitFn(inputText);
   };
 
@@ -24,12 +24,11 @@ const TextField = ({
           pattern={pattern}
           type={type}
         />
-        <button
-          type="submit"
-          className="px-5 py-1 border-2 border-gray-400 hover:border-gray-500 active:bg-gray-100 rounded-full text-gray-400 hover:text-gray-500 font-semibold text-l focus:outline-none"
-        >
-          {btnText}
-        </button>
+        <FormButton
+          text={btnText}
+          submitFn={handleSubmit}
+          outline={true}
+        />
       </form>
     </div>
   );

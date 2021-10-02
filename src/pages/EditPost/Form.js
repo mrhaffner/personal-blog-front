@@ -150,7 +150,7 @@ const Form = ({ blog, toast }) => {
                 blog.isPublished ? 'unpublish' : 'publish',
               )}
               text={blog.isPublished ? 'Unpublish' : 'Publish'}
-              color="amber"
+              color="green"
             />
           </div>
           <FormButton
