@@ -10,6 +10,9 @@ import {
 import 'react-toastify/dist/ReactToastify.css';
 import useBlogFormError from '../../hooks/useBlogFormError';
 import InputError from '../../components/InputError';
+import ChangePostAlert from '../../components/ChangePostAlert';
+import useToggle from '../../hooks/useToggle';
+import FormButton from '../../components/FormButton';
 
 const Form = ({ blog, toast }) => {
   const [title, setTitle] = useState(blog.title);
@@ -24,16 +27,11 @@ const Form = ({ blog, toast }) => {
     setTitleInUse,
     setReset,
   } = useBlogFormError(text, title, subTitle);
-
   let history = useHistory();
-
   const dispatch = useDispatch();
 
-  // change slug and redirect if title is different!
-  // add some sort of indication that it was updated
-  const handleEdit = async (e) => {
+  const handleEdit = () => async () => {
     setReset(false);
-    e.preventDefault();
     const blogObject = { ...blog, title, subTitle, text };
     try {
       if (!title || !subTitle || !text) {
@@ -53,101 +51,136 @@ const Form = ({ blog, toast }) => {
 
     toast.success('Post updated!');
     setReset(true);
+    toggleAlert();
   };
 
-  // add a warning
-  const handlePubStatus = () => {
+  const handlePubStatus = () => () => {
     const publishObject = { isPublished: !blog.isPublished };
     dispatch(publishBlog(blog._id, publishObject));
     toast.success(
       `Post ${blog.isPublished ? 'Unpublished' : 'Published'}`,
     );
+    toggleAlert();
   };
 
-  // add a warning
-  const handleDelete = () => {
+  const handleDelete = () => () => {
     dispatch(removeBlog(blog._id));
     toast.success('Post deleted...');
     history.push('/admin');
   };
 
-  //should display date created!!!
+  const [alertText, setAlertText] = useState('');
+  const [showAlert, toggleAlert] = useToggle();
+  const [submitFn, setSubmitFn] = useState(null);
+
+  const toggleFn = (fn, text) => () => {
+    toggleAlert();
+    setSubmitFn(fn);
+    setAlertText(text);
+  };
   return (
-    <form
-      onSubmit={(e) => handleEdit(e)}
-      className="self-start w-full space-y-7 my-16"
-    >
-      <div className="space-y-1">
-        <label
-          htmlFor="Title"
-          className="font-semibold text-gray-600 tracking-wide"
-        >
-          Title
-        </label>
-        <input
-          type="text"
-          onChange={(e) => setTitle(e.target.value)}
-          value={title}
-          className="border-b-2 focus:border-gray-400 pr-12 block focus:outline-none w-128"
-        />
-        {titleError && (
-          <InputError text={titleErrorText} spacing="mt-1" />
-        )}
-      </div>
-      <div className="space-y-1">
-        <label
-          htmlFor="Subtitle"
-          className="font-semibold text-gray-600 tracking-wide"
-        >
-          Subtitle
-        </label>
-        <input
-          type="text"
-          onChange={(e) => setSubTitle(e.target.value)}
-          value={subTitle}
-          className="border-b-2 focus:border-gray-400 pr-12 block focus:outline-none w-128"
-        />
-        {subTitleError && (
-          <InputError text="Please enter a subtitle" spacing="mt-1" />
-        )}
-      </div>
-      <div>
-        <label
-          htmlFor="Article Body"
-          className="font-semibold text-gray-600 tracking-wide"
-        >
-          Article Body
-        </label>
-        <MDEditor value={text} onChange={setText} className="mt-3" />
-        {textError && (
-          <InputError text="Please enter some text" spacing="mt-1" />
-        )}
-      </div>
-      <div className="flex justify-between">
-        <div className="space-x-3">
-          <button
-            type="submit"
-            className="px-5 py-2 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 rounded-full text-white font-bold text-l tracking-wide focus:outline-none"
+    <>
+      <form className="self-start w-full space-y-7 my-16">
+        <div className="space-y-1">
+          <label
+            htmlFor="Title"
+            className="font-semibold text-gray-600 tracking-wide"
           >
-            Update
-          </button>
-          <button
-            type="button"
-            onClick={() => handlePubStatus()}
-            className="px-5 py-2 bg-amber-500 hover:bg-amber-600 active:bg-amber-700 rounded-full text-white font-bold text-l tracking-wide focus:outline-none"
-          >
-            {blog.isPublished ? 'Unpublish' : 'Publish'}
-          </button>
+            Title
+          </label>
+          <input
+            type="text"
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
+            className="border-b-2 focus:border-gray-400 pr-12 block focus:outline-none w-128"
+          />
+          {titleError && (
+            <InputError text={titleErrorText} spacing="mt-1" />
+          )}
         </div>
-        <button
-          type="button"
-          onClick={() => handleDelete()}
-          className="px-5 py-2 bg-red-500 hover:bg-red-600 active:bg-red-700 rounded-full text-white font-bold text-l tracking-wide focus:outline-none"
-        >
-          Delete
-        </button>
-      </div>
-    </form>
+        <div className="space-y-1">
+          <label
+            htmlFor="Subtitle"
+            className="font-semibold text-gray-600 tracking-wide"
+          >
+            Subtitle
+          </label>
+          <input
+            type="text"
+            onChange={(e) => setSubTitle(e.target.value)}
+            value={subTitle}
+            className="border-b-2 focus:border-gray-400 pr-12 block focus:outline-none w-128"
+          />
+          {subTitleError && (
+            <InputError
+              text="Please enter a subtitle"
+              spacing="mt-1"
+            />
+          )}
+        </div>
+        <div>
+          <label
+            htmlFor="Article Body"
+            className="font-semibold text-gray-600 tracking-wide"
+          >
+            Article Body
+          </label>
+          <MDEditor
+            value={text}
+            onChange={setText}
+            className="mt-3"
+          />
+          {textError && (
+            <InputError
+              text="Please enter some text"
+              spacing="mt-1"
+            />
+          )}
+        </div>
+        <div className="flex justify-between">
+          <div className="space-x-3">
+            <button
+              type="button"
+              onClick={() => toggleFn(handleEdit, 'update')}
+              className="px-5 py-2 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 rounded-full text-white font-bold text-l tracking-wide focus:outline-none"
+            >
+              Update
+            </button>
+            <button
+              type="button"
+              onClick={() =>
+                toggleFn(
+                  handlePubStatus,
+                  blog.isPublished ? 'unpublish' : 'publish',
+                )
+              }
+              className="px-5 py-2 bg-amber-500 hover:bg-amber-600 active:bg-amber-700 rounded-full text-white font-bold text-l tracking-wide focus:outline-none"
+            >
+              {blog.isPublished ? 'Unpublish' : 'Publish'}
+            </button>
+          </div>
+          {/* <button
+            type="button"
+            onClick={() => toggleFn(handleDelete, 'delete')}
+            className="px-5 py-2 bg-red-500 hover:bg-red-600 active:bg-red-700 rounded-full text-white font-bold text-l tracking-wide focus:outline-none"
+          >
+            Delete
+          </button> */}
+          <FormButton
+            clickFn={toggleFn(handleDelete, 'delete')}
+            text="Delete"
+            color="red"
+          />
+        </div>
+      </form>
+      {showAlert && (
+        <ChangePostAlert
+          alertText={alertText}
+          toggleAlert={toggleAlert}
+          submitFn={submitFn}
+        />
+      )}
+    </>
   );
 };
 

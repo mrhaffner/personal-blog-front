@@ -1,4 +1,3 @@
-import React from 'react';
 import MainCard from './MainCard';
 import NavHeader from '../../components/NavHeader';
 
