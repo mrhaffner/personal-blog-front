@@ -45,7 +45,7 @@ const Filter = ({ filter, setFilter, setTextFilter }) => {
         </div>
         <div>
           <TextField
-            placeholderText="Search Articles by Title..."
+            placeholderText="Search articles by title..."
             btnText="Search"
             submitFn={submitFn}
           />
