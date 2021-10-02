@@ -9,6 +9,7 @@ const useBlogFormError = (text, title, subTitle) => {
   const [failedSubmit, setFailedSubmit] = useState(false);
   const [titleErrorText, setTitleErrorText] = useState(noTitle);
   const [titleInUse, setTitleInUse] = useState(false);
+  const [reset, setReset] = useState(false);
 
   useEffect(() => {
     if (failedSubmit) {
@@ -20,6 +21,14 @@ const useBlogFormError = (text, title, subTitle) => {
     }
   }, [failedSubmit]);
 
+  useEffect(() => {
+    if (reset) {
+      setTextError(false);
+      setTitleError(false);
+      setSubTitleError(false);
+    }
+  }, [reset]);
+
   return {
     titleError,
     subTitleError,
@@ -27,6 +36,7 @@ const useBlogFormError = (text, title, subTitle) => {
     setFailedSubmit,
     titleErrorText,
     setTitleInUse,
+    setReset,
   };
 };
 

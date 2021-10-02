@@ -20,6 +20,9 @@ const Form = ({ blog, toast }) => {
     subTitleError,
     textError,
     setFailedSubmit,
+    titleErrorText,
+    setTitleInUse,
+    setReset,
   } = useBlogFormError(text, title, subTitle);
 
   let history = useHistory();
@@ -29,20 +32,27 @@ const Form = ({ blog, toast }) => {
   // change slug and redirect if title is different!
   // add some sort of indication that it was updated
   const handleEdit = async (e) => {
+    setReset(false);
     e.preventDefault();
     const blogObject = { ...blog, title, subTitle, text };
     try {
       if (!title || !subTitle || !text) {
+        if (!title) {
+          setTitleInUse(false);
+        }
         throw new Error('input field missing');
       }
       await dispatch(editBlog(blog._id, blogObject));
     } catch (e) {
+      if (e.message === 'Request failed with status code 400') {
+        setTitleInUse(true);
+      }
       setFailedSubmit(true);
-      console.log(e);
       return;
     }
 
     toast.success('Post updated!');
+    setReset(true);
   };
 
   // add a warning
@@ -81,7 +91,7 @@ const Form = ({ blog, toast }) => {
           className="border-b-2 focus:border-gray-400 pr-12 block focus:outline-none w-128"
         />
         {titleError && (
-          <InputError text="Please enter a title" spacing="mt-1" />
+          <InputError text={titleErrorText} spacing="mt-1" />
         )}
       </div>
       <div className="space-y-1">
