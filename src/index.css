@@ -18,6 +18,7 @@ code {
 /* purgecss start ignore */
 /* Markdown Styles */
 /* Global */
+
 .markdown {
   @apply leading-relaxed text-sm;
 }
