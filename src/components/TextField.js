@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 
-const TextField = ({ placeholderText, btnText, submitFn }) => {
+const TextField = ({
+  placeholderText,
+  btnText,
+  submitFn,
+  pattern,
+  type,
+}) => {
   const [inputText, setInputText] = useState('');
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,6 +21,8 @@ const TextField = ({ placeholderText, btnText, submitFn }) => {
           onChange={(e) => setInputText(e.target.value)}
           placeholder={placeholderText}
           className="border-b-2 focus:border-gray-400 pr-12 focus:outline-none"
+          pattern={pattern}
+          type={type}
         />
         <button
           type="submit"

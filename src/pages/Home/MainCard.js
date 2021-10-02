@@ -56,6 +56,8 @@ const MainCard = ({ toast }) => {
             placeholderText="Email Address"
             btnText="Subscribe"
             submitFn={handleEmailSubmit}
+            pattern="/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/i"
+            type="email"
           />
         </div>
       </div>
