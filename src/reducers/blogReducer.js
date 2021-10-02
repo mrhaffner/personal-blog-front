@@ -3,7 +3,7 @@ import blogService from '../services/blogs';
 const blogReducer = (state = [], action) => {
   switch (action.type) {
     case 'SET_BLOGS':
-      return action.blogs.sort((a, b) => b.likes - a.likes);
+      return action.blogs.sort((a, b) => b.date - a.date);
     case 'NEW_BLOG':
       return [...state, action.blog];
     case 'REMOVE_BLOG':

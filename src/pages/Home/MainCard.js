@@ -1,16 +1,23 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import BlogList from '../../components/BlogList';
 import Author from './Author';
 import Filter from './Filter';
 import TextField from '../../components/TextField';
 import LatestPosts from './LatestPosts';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { getPublishedBlogs } from '../../reducers/blogReducer';
 
 const MainCard = ({ toast }) => {
   const [filter, setFilter] = useState('Latest');
   const [textFilter, setTextFilter] = useState('');
-  const blogs = useSelector((state) => state.blogs);
   const filterRef = useRef();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPublishedBlogs());
+  }, []);
+
+  const blogs = useSelector((state) => state.blogs);
 
   const handleEmailSubmit = (inputText) => {
     console.log(inputText);

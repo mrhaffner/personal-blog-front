@@ -5,7 +5,6 @@ import Admin from './pages/Admin';
 import NewPost from './pages/NewPost';
 import EditPost from './pages/EditPost';
 import LogIn from './pages/LogIn';
-import { getPublishedBlogs } from './reducers/blogReducer';
 import { setUser } from './reducers/loggedUserReducer';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,10 +13,6 @@ import { ToastContainer, toast } from 'react-toastify';
 const App = () => {
   const dispatch = useDispatch();
   const loggedUser = useSelector((state) => state.loggedUser);
-
-  useEffect(() => {
-    dispatch(getPublishedBlogs());
-  }, [dispatch]);
 
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem(
