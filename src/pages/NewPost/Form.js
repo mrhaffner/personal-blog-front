@@ -7,6 +7,7 @@ import TitleInput from '../../components/TitleInput';
 import 'react-toastify/dist/ReactToastify.css';
 import InputError from '../../components/InputError';
 import useBlogFormError from '../../hooks/useBlogFormError';
+import FormButton from '../../components/FormButton';
 
 const Form = ({ toast }) => {
   const [title, setTitle] = useState('');
@@ -29,8 +30,7 @@ const Form = ({ toast }) => {
     stateUpdate(e.target.value);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     const blogObject = { title, subTitle, text };
     if (!title || !subTitle || !text) {
       if (!title) {
@@ -55,10 +55,7 @@ const Form = ({ toast }) => {
   };
 
   return (
-    <form
-      onSubmit={(e) => handleSubmit(e)}
-      className="self-start w-full space-y-7 my-16"
-    >
+    <form className="self-start w-full space-y-7 my-16">
       <div>
         <TitleInput
           text="Title"
@@ -92,13 +89,7 @@ const Form = ({ toast }) => {
           <InputError text="Please enter some text" spacing="mt-1" />
         )}
       </div>
-
-      <button
-        type="submit"
-        className=" px-5 py-2 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 rounded-full text-white font-bold text-l tracking-wide focus:outline-none"
-      >
-        Save
-      </button>
+      <FormButton clickFn={handleSubmit} text="Save" color="blue" />
     </form>
   );
 };

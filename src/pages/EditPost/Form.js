@@ -139,33 +139,20 @@ const Form = ({ blog, toast }) => {
         </div>
         <div className="flex justify-between">
           <div className="space-x-3">
-            <button
-              type="button"
-              onClick={() => toggleFn(handleEdit, 'update')}
-              className="px-5 py-2 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 rounded-full text-white font-bold text-l tracking-wide focus:outline-none"
-            >
-              Update
-            </button>
-            <button
-              type="button"
-              onClick={() =>
-                toggleFn(
-                  handlePubStatus,
-                  blog.isPublished ? 'unpublish' : 'publish',
-                )
-              }
-              className="px-5 py-2 bg-amber-500 hover:bg-amber-600 active:bg-amber-700 rounded-full text-white font-bold text-l tracking-wide focus:outline-none"
-            >
-              {blog.isPublished ? 'Unpublish' : 'Publish'}
-            </button>
+            <FormButton
+              clickFn={toggleFn(handleEdit, 'update')}
+              text="Update"
+              color="blue"
+            />
+            <FormButton
+              clickFn={toggleFn(
+                handlePubStatus,
+                blog.isPublished ? 'unpublish' : 'publish',
+              )}
+              text={blog.isPublished ? 'Unpublish' : 'Publish'}
+              color="amber"
+            />
           </div>
-          {/* <button
-            type="button"
-            onClick={() => toggleFn(handleDelete, 'delete')}
-            className="px-5 py-2 bg-red-500 hover:bg-red-600 active:bg-red-700 rounded-full text-white font-bold text-l tracking-wide focus:outline-none"
-          >
-            Delete
-          </button> */}
           <FormButton
             clickFn={toggleFn(handleDelete, 'delete')}
             text="Delete"
