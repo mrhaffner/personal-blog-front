@@ -17,6 +17,8 @@ const Form = ({ toast }) => {
     subTitleError,
     textError,
     setFailedSubmit,
+    titleErrorText,
+    setTitleInUse,
   } = useBlogFormError(text, title, subTitle);
 
   let history = useHistory();
@@ -30,9 +32,17 @@ const Form = ({ toast }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const blogObject = { title, subTitle, text };
+    if (!title || !subTitle || !text) {
+      if (!title) {
+        setTitleInUse(false);
+      }
+      setFailedSubmit(true);
+      return;
+    }
     try {
       await dispatch(addBlog(blogObject));
     } catch (e) {
+      setTitleInUse(true);
       setFailedSubmit(true);
       return;
     }
@@ -56,7 +66,7 @@ const Form = ({ toast }) => {
           changeFn={changeFn(setTitle)}
         />
         {titleError && (
-          <InputError text="Please enter a title" spacing="mt-1" />
+          <InputError text={titleErrorText} spacing="mt-1" />
         )}
       </div>
       <div>
@@ -70,7 +80,7 @@ const Form = ({ toast }) => {
         )}
       </div>
 
-      <div className="">
+      <div>
         <label
           htmlFor="Article Body"
           className="font-semibold text-gray-600 tracking-wide"
