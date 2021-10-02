@@ -3,8 +3,6 @@ import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeUser } from '../reducers/loggedUserReducer';
 
-//move login, make it conditionally appear
-//make admin route conditional
 const Nav = () => {
   const loggedUser = useSelector((state) => state.loggedUser);
   const dispatch = useDispatch();
@@ -23,21 +21,17 @@ const Nav = () => {
           Home
         </Link>
         <div className="space-x-6">
-          {loggedUser ? (
+          {loggedUser && (
             <p
               className="inline cursor-pointer hover:text-bluegray-200"
               onClick={() => signOut()}
             >
               Sign Out
             </p>
-          ) : (
-            <Link to="/login" className="hover:text-bluegray-200">
-              Sign In (temp)
-            </Link>
           )}
           {loggedUser && (
             <Link to="/admin" className="hover:text-bluegray-200">
-              Admin (temp)
+              Admin
             </Link>
           )}
         </div>
