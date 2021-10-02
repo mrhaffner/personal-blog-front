@@ -1,13 +1,16 @@
-import { useState } from 'react';
 import { useLocation } from 'react-router';
 import BlogSuggest from '../BlogSuggest';
 import List from './List';
 import PageTurn from './PageTurn';
 
-const BlogList = ({ blogs, edit, textFilter, heightRef }) => {
-  const [page, setPage] = useState(1);
-  // this needs to change to handle arrays shorter than 9 - might be easy to map if using flex grid instead of all the flex box divs
-  // might need to set a fixed height for the card if less than 9 blogs are given
+const BlogList = ({
+  blogs,
+  edit,
+  textFilter,
+  heightRef,
+  page,
+  setPage,
+}) => {
   let location = useLocation();
 
   const pageCount =
@@ -37,7 +40,6 @@ const BlogList = ({ blogs, edit, textFilter, heightRef }) => {
         </>
       );
     }
-    //keep size of card consistent with less than 7 search results?
     const filteredPageCount =
       filteredBlogs.length % 9 === 0
         ? filteredBlogs.length / 9
@@ -66,7 +68,6 @@ const BlogList = ({ blogs, edit, textFilter, heightRef }) => {
       </>
     );
   }
-  //keep size of card consistent with less than 7 search results?
 
   return (
     <div className="mb-20">

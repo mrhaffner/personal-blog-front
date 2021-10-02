@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getPublishedBlogs } from '../../reducers/blogReducer';
 
 const MainCard = ({ toast }) => {
+  const [page, setPage] = useState(1);
   const [filter, setFilter] = useState('Latest');
   const [textFilter, setTextFilter] = useState('');
   const filterRef = useRef();
@@ -31,6 +32,7 @@ const MainCard = ({ toast }) => {
           setFilter={setFilter}
           filter={filter}
           setTextFilter={setTextFilter}
+          setPage={setPage}
         />
       </div>
       {filter === 'Latest' ? (
@@ -40,6 +42,8 @@ const MainCard = ({ toast }) => {
           blogs={blogs}
           textFilter={textFilter}
           heightRef={filterRef}
+          page={page}
+          setPage={setPage}
         />
       )}
       <div className="w-full bg-green-700 flex flex-col items-center mb-32 pb-44 pt-32">

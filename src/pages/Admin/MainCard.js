@@ -4,6 +4,7 @@ import Filter from './Filter';
 import { useSelector } from 'react-redux';
 
 const MainCard = () => {
+  const [page, setPage] = useState(1);
   const [filter, setFilter] = useState('All');
   const [textFilter, setTextFilter] = useState('');
   const blogs = useSelector((state) => state.blogs);
@@ -25,6 +26,7 @@ const MainCard = () => {
             setFilter={setFilter}
             filter={filter}
             setTextFilter={setTextFilter}
+            setPage={setPage}
           />
         </div>
         <BlogList
@@ -32,6 +34,8 @@ const MainCard = () => {
           edit={true}
           textFilter={textFilter}
           heightRef={filterRef}
+          page={page}
+          setPage={setPage}
         />
       </div>
     </div>
