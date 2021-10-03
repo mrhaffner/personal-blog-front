@@ -3,7 +3,8 @@ import MainCard from './MainCard';
 import Header from './Header';
 import Footer from './Footer';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { getPublishedBlogs } from '../../reducers/blogReducer';
 
 const BlogPost = () => {
   const [loading, setLoading] = useState(true);
@@ -11,6 +12,11 @@ const BlogPost = () => {
     window.scrollTo(0, 0);
     setLoading(false);
   });
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPublishedBlogs());
+  }, []);
 
   const blogs = useSelector((state) => state.blogs);
   const { slug } = useParams();

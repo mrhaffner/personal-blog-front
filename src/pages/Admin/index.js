@@ -9,7 +9,7 @@ const Admin = () => {
 
   useEffect(() => {
     dispatch(getAllBlogs());
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className="bg-lightblue-50 h-full pb-16">
