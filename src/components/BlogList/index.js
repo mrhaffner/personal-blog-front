@@ -59,15 +59,15 @@ const BlogList = ({
     );
   }
 
-  if (!blogs.length) {
-    return (
-      <>
-        <h3 className="text-bluegray-500 text-xl mt-36 mb-72">
-          Nothing to display...
-        </h3>
-      </>
-    );
-  }
+  // if (!blogs.length) {
+  //   return (
+  //     <>
+  //       <h3 className="text-bluegray-500 text-xl mt-36 mb-72">
+  //         Nothing to display...
+  //       </h3>
+  //     </>
+  //   );
+  // }
 
   return (
     <div className="mb-20">
