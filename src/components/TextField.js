@@ -15,7 +15,7 @@ const TextField = ({
 
   return (
     <div className="p-10 flex items-end">
-      <form onSubmit={handleSubmit} className="space-x-9">
+      <form className="space-x-9">
         <input
           type="text"
           onChange={(e) => setInputText(e.target.value)}
@@ -26,7 +26,7 @@ const TextField = ({
         />
         <FormButton
           text={btnText}
-          submitFn={handleSubmit}
+          clickFn={handleSubmit}
           outline={true}
         />
       </form>
