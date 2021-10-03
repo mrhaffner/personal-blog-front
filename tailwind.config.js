@@ -26,6 +26,10 @@ module.exports = {
         'picture-card2': "url('./img/picture-card2.jpg')",
         'picture-card3': "url('./img/picture-card3.jpg')",
         'picture-card4': "url('./img/picture-card4.jpg')",
+        //    'picture-card1': "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./img/picture-card1.jpg')",
+        // 'picture-card2': "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./img/picture-card2.jpg')",
+        // 'picture-card3': "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./img/picture-card3.jpg')",
+        // 'picture-card4': "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./img/picture-card4.jpg')",
         'w-img-card': "url('./img/w-img-card.jpg')",
       }),
       boxShadow: {

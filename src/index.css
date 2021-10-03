@@ -19,6 +19,22 @@ code {
 /* Markdown Styles */
 /* Global */
 
+.card-zoom {
+  @apply relative flex items-center justify-center overflow-hidden;
+}
+.card-zoom-image {
+  @apply bg-center bg-cover transition-all duration-500 ease-in-out transform;
+}
+.card-zoom-text {
+  @apply absolute transition-all duration-500 ease-in-out transform scale-150;
+}
+.card-zoom:hover .card-zoom-image {
+  @apply scale-150;
+}
+.card-zoom:hover .card-zoom-text {
+  @apply scale-100;
+}
+
 .markdown {
   @apply leading-relaxed text-sm;
 }
