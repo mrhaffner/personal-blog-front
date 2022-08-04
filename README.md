@@ -1,21 +1,33 @@
-### This is the front end for my Personal Blog project!
+## Personal Blog
 
-#### Watch the demo:
+A prototype for a personal blogging website (front end).
+
+## Watch the demo:
 
 https://user-images.githubusercontent.com/70085763/135778777-0de25ece-f328-4c26-8854-be16c4e23b45.mp4
 
-#### Features
+## Visit the back end's repository:
+
+https://github.com/mrhaffner/personal-blog-api
+
+## Features
 
 - CRUD operations for blog posts and users
 - User creation / authentication / authorization
 
-#### Main technologies and libraries used:
+## Built with:
 
 - React
 - Tailwind CSS
 - Redux
 - Axios
 
-#### Visit the back end's repository:
+## Acknowledgements:
 
-https://github.com/mrhaffner/personal-blog-api
+Images from Unsplash.com
+
+## Potential improvements:
+
+- Testing
+- Proper documentation / comments
+- Improved Javascript style
